@@ -32,14 +32,17 @@ public class Brett {
 		this.ruter = ruter;
 	}
 
+	public List<Rute> getRuter() {
+		return ruter;
+	}
+
 	/**
 	 * Sjekker om ruta er gyldig. Sjekker at spiller ikkje passerer mål.
 	 * @param sum 
 	 * @return 
 	 */
 	public boolean gyldigRute(Rute rute, int sum) {
-		//TODO Lag metode
-		return true;
+		return finnRute(rute, sum) != null;
 	}
 
 	/**
@@ -49,8 +52,9 @@ public class Brett {
 	 * @return 
 	 */
 	public Rute finnRute(Rute plass, int sum) {
-		//TODO
-		return null;
+		int id = plass.getId();
+		int nyId = id+sum;
+		return finnRute(nyId);
 	}
 /**
  * Finner rute med gitt id 
