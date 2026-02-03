@@ -112,14 +112,5 @@ public class Stigespill {
 	public boolean isVunnet() {
 		return vunnet;
 	}
-	public static int getMaxAntall() {
-		return MAX_ANTALL;
-	}
-	public static int getMinAntall() {
-		return MIN_ANTALL;
-	}
 	
-	
-	
-
 }
