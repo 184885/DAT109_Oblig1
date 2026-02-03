@@ -14,58 +14,25 @@ CREATE TABLE dtype(
 
 CREATE TABLE rute(
     ruteID INT PRIMARY KEY,
-    brettID INT NOT NULL,
+    brettID INT NOT NULL DEFAULT 1,
     rute_type INT NOT NULL DEFAULT 1,
-    FOREIGN KEY (brettID) REFERENCESbrett(id) DEFAULT 1,
+    FOREIGN KEY (brettID) REFERENCES brett(id),
     FOREIGN KEY (rute_type) REFERENCES dtype(id));
 
-CREATE TABLE flytt(
-    start INT PRIMARY KEY,
-    slutt INT NOT NULL,
-    flytt_type INT NOT NULL DEFAULT 8,
-    FOREIGN KEY (start) REFERENCES rute(ruteID),
-    FOREIGN KEY (slutt) REFERENCES rute(ruteID),
-    FOREIGN KEY (flytt_type) REFERENCES dtype(id)
-    );
-
-INSERT INTO brettID
-VALUES(1,'hovudbrett');
+INSERT INTO brett
+VALUES(1, 'hovudbrett');
 
 INSERT INTO dtype
 VALUES(1,'vanlig'),
 (2,'start'),
-(3,'fengsel'),
-(4,'maal'),
-(5,'flytt_start'),
-(6,'flytt_slutt'),
-(7,'slange'),
-(8,'stige');
+(3,'maal');
 
 INSERT INTO rute(ruteID, rute_type)
-VALUES(0, 3),
-(1,2),
-(100,4);
+VALUES(1,2),
+(100,3);
 
 INSERT INTO rute(ruteID)
 SELECT *
 FROM GENERATE_SERIES(2,99);
 
-INSERT INTO flytt(start,slutt)
-VALUES(3,10),
-(55,72),
-(44,65);
 
-INSERT INTO flytt
-VALUES(99,1,7),
-(56,43,7),
-(70,65,7);
-
-UPDATE rute
-SET rute_type = 5
-WHERE rute.ruteID IN 
-(SELECT flytt.start FROM flytt);
-
-UPDATE rute
-SET rute_type = 6
-WHERE rute.ruteID IN 
-(SELECT flytt.slutt FROM flytt);

@@ -4,17 +4,26 @@ import java.util.List;
 
 import no.hvl.dat109.model.Rute;
 
-public interface CrudRepository{
-	
+/**
+ * Klasse for å kontakte database Rute er T Integer er id
+ *
+ * @author June Volden
+ */
+public interface CrudRepository {
+
 	/**
 	 * Returns all instances of the type.
 	 */
 	List<Rute> findAll();
+
 	/**
 	 * Finner rute gitt id
+	 * 
 	 * @param id
 	 * @return
 	 */
-		Rute findById(int id) ;
-	
+	Rute findById(int id);
+
+
+
 }

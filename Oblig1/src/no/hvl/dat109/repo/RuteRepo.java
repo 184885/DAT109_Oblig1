@@ -14,7 +14,7 @@ import no.hvl.dat109.model.Rute;
  *
  * @author June Volden
  */
-@SuppressWarnings("rawtypes")
+
 public class RuteRepo implements CrudRepository {
 	private EntityManagerFactory emf;
 
@@ -38,11 +38,7 @@ public class RuteRepo implements CrudRepository {
 			em.close();
 		}
 	}
-/**
- * Finner rute gitt id
- * @param id
- * @return
- */
+@Override
 	public Rute findById(int id) {
 		EntityManager em = emf.createEntityManager();
 
@@ -52,32 +48,4 @@ public class RuteRepo implements CrudRepository {
 			em.close();
 		}
 	}
-
-	/**
-	 * Finner sluttrute gitt startrute
-	 * 
-	 * @param id_start
-	 * @return sluttrute
-	 */
-	public Rute findSlutt(int id_start) {
-		EntityManager em = emf.createEntityManager();
-		String jpqlQuery = """
-				select r
-				from Rute r,
-				r.flytt f
-				where f.start like :id_start
-				and r.ruteID like f.slutt
-				""";
-
-		try {
-			TypedQuery<Rute> query = em.createQuery(jpqlQuery, Rute.class);
-			return query.getSingleResult();
-		} catch (NoResultException e) {
-			return em.find(Rute.class, id_start);
-		} finally {
-
-			em.close();
-		}
-	}
-
 }
