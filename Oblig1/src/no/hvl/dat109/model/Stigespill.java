@@ -1,5 +1,6 @@
 package no.hvl.dat109.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,8 +22,9 @@ public class Stigespill {
 	public Stigespill() {
 		this.brett = new Brett();
 		this.kopp = new Kopp();
+		this.spillere = new ArrayList<>(MAX_ANTALL);
 		for (int i = 0; i < MAX_ANTALL; i++) {
-			spillere.add(new Spiller());
+			spillere.add(new Spiller(i));
 		}
 		vunnet = false;
 	}
@@ -35,8 +37,9 @@ public class Stigespill {
 		this.brett = new Brett();
 		this.kopp = new Kopp();
 		int antall = Math.max(MIN_ANTALL, Math.min(antallSpillere, MAX_ANTALL));
+		this.spillere = new ArrayList<>(antall);
 		for (int i = 0; i < antall; i++) {
-			spillere.add(new Spiller());
+			spillere.add(new Spiller(i));
 		}
 		vunnet = false;
 	}
@@ -48,8 +51,9 @@ public class Stigespill {
 	public Stigespill(Brett brett) {
 		this.brett = brett;
 		this.kopp = new Kopp();
+		this.spillere = new ArrayList<>(MAX_ANTALL);
 		for (int i = 0; i < MAX_ANTALL; i++) {
-			spillere.add(new Spiller());
+			spillere.add(new Spiller(i));
 		}
 		vunnet = false;
 	}
