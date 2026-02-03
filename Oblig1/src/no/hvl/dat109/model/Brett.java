@@ -58,7 +58,6 @@ public class Brett {
  * @return rute
  */
 	public Rute finnRute(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return ruter.stream().filter(r->r.getId()==id).findAny().orElse(null);
 	}
 }

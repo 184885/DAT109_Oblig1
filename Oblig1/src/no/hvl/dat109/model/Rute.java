@@ -34,12 +34,6 @@ public abstract class Rute {
 		return ruteID;
 	}
 
-
-	public void setRuteID(int ruteID) {
-		this.ruteID = ruteID;
-	}
-
-
 	protected abstract Rute landetPaa();
 
 }
