@@ -13,6 +13,7 @@ public class Main {
 
 		service.init();
 		service.spill();
+		service.close();
 	}
 	
 }
