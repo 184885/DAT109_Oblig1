@@ -14,8 +14,7 @@ public class VanligRute extends Rute{
 
 	@Override
 	protected Rute landetPaa() {
-		//TODO
-		return null;
+		return this;
 	}
 
 }

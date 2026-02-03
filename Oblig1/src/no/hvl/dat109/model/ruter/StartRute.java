@@ -4,18 +4,18 @@ import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import no.hvl.dat109.model.Rute;
+
 /**
  * @author June Volden
  */
 @Entity
 @Table(schema = "dat109_o1")
 @DiscriminatorValue("2")
-public class StartRute extends Rute{
+public class StartRute extends Rute {
 
 	@Override
 	protected Rute landetPaa() {
-		//TODO
-	return null;
+		return this;
 	}
 
 }
