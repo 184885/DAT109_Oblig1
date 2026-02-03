@@ -16,4 +16,12 @@ public class Brikke {
 		
 	}
 
+	public Rute getRute() {
+		return rute;
+	}
+
+	public void setRute(Rute rute) {
+		this.rute = rute;
+	}
+
 }

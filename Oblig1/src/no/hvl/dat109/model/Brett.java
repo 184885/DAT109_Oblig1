@@ -34,15 +34,22 @@ public class Brett {
 
 	/**
 	 * Sjekker om ruta er gyldig. Sjekker at spiller ikkje passerer mål.
+	 * @param sum 
+	 * @return 
 	 */
-	public void gyldigRute(Rute rute) {
-
+	public boolean gyldigRute(Rute rute, int sum) {
+		//TODO Lag metode
+		return true;
 	}
 
 	/**
 	 * Finner rute på brettet
+	 * @param sum 
+	 * @param plass 
+	 * @return 
 	 */
-	public void finnRute() {
-
+	public Rute finnRute(Rute plass, int sum) {
+		//TODO
+		return null;
 	}
 }

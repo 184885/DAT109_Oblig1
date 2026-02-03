@@ -13,7 +13,9 @@ import no.hvl.dat109.model.Rute;
 public class StartRute extends Rute{
 
 	@Override
-	protected void landetPaa() {
+	protected Rute landetPaa() {
+		//TODO
+	return null;
 	}
 
 }

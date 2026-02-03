@@ -30,6 +30,6 @@ public abstract class Rute {
 	@JoinColumn(name = "rute_type", insertable = false, updatable = false)
 	private DType type;
 
-	protected abstract void landetPaa();
+	protected abstract Rute landetPaa();
 
 }

@@ -33,7 +33,7 @@ public class SpillService {
 	}
 
 	/**
-	 * Initialiserer spillet
+	 * Initialiserer spillet, og starte alle spillere på startrute
 	 */
 	public void init() {
 		spill = new Stigespill(ruteRepo.findBrett(1));

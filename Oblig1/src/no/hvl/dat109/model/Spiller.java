@@ -30,21 +30,36 @@ public class Spiller {
 	public void spillTrekk(Kopp kopp, Brett brett) {
 		kopp.trill();
 		int sum = kopp.getSum();
+		fengsel(sum);
+		if (iFengsel) {
+			brikke.flyttFengsel();
+			sum -= 6;
+		if(sum<0||sum>=12) {
+			sum = 0;
+		}
+		}
+		Rute plass = brikke.getRute();
+		
+		if(!brett.gyldigRute(plass, sum)) {
+			sum = 0;
+		}
+		Rute nyPlass = brett.finnRute(plass,sum);
+		brikke.setRute(nyPlass.landetPaa());
 
 	}
-	
+
 	/**
-	 * Sjekker om spiller har trillet 3 seksere på rad.
-	 * Plasserer isåfall Brikke på fengsel ruten (ute av spill)
+	 * Sjekker om spiller har trillet 3 seksere på rad. Plasserer isåfall Brikke på
+	 * fengsel ruten (ute av spill)
 	 */
 	private void fengsel(int sum) {
 		iFengsel = false;
-		if(sum >= 18) {
+		if (sum >= 18) {
 			iFengsel = true;
 			brikke.flyttFengsel();
 		}
 	}
-	
+
 	/**
 	 * Sjekker om spiller har vunnet spillet
 	 * 
@@ -54,5 +69,5 @@ public class Spiller {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
+
 }
