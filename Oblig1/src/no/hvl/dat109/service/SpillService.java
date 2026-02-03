@@ -27,7 +27,7 @@ public class SpillService {
 
 		ruteRepo = new RuteRepo(emf);
 	}
-
+	
 	private List<Rute> finnAlleRuter() {
 		return ruteRepo.findAll();
 	}
@@ -36,7 +36,7 @@ public class SpillService {
 	 * Initialiserer spillet
 	 */
 	public void init() {
-		spill = new Stigespill(finnAlleRuter());
+		spill = new Stigespill(ruteRepo.findBrett(1));
 	}
 
 	/**

@@ -16,10 +16,16 @@ import jakarta.persistence.Table;
 @Entity
 @Table(schema = "dat109_o1")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "rute_type", discriminatorType = DiscriminatorType.STRING)
+@DiscriminatorColumn(name = "rute_type", discriminatorType = DiscriminatorType.INTEGER)
 public abstract class Rute {
 	@Id
 	private int ruteID;
+	
+	@ManyToOne
+	@JoinColumn(name = "brettID")
+	  private Brett brett;
+
+	
 	@ManyToOne
 	@JoinColumn(name = "rute_type", insertable = false, updatable = false)
 	private DType type;

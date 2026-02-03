@@ -9,7 +9,7 @@ import no.hvl.dat109.model.Rute;
  */
 @Entity
 @Table(schema = "dat109_o1")
-@DiscriminatorValue("4")
+@DiscriminatorValue("3")
 public class MaalRute extends Rute{
 
 	@Override

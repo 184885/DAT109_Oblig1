@@ -8,8 +8,11 @@
 	<persistence-unit name="stigespillPersistenceUnit" transaction-type="RESOURCE_LOCAL">
 
  		<class>no.hvl.dat109.model.Rute</class>
-		<class>no.hvl.dat109.model.flytt.Flytt</class>
+		<class>no.hvl.dat109.model.Brett</class>
 		<class>no.hvl.dat109.model.DType</class>
+			<class>no.hvl.dat109.model.ruter.MaalRute</class>
+			<class>no.hvl.dat109.model.ruter.StartRute</class>
+			<class>no.hvl.dat109.model.ruter.VanligRute</class>
 		
 
 		<properties>

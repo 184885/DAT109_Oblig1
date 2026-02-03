@@ -4,9 +4,9 @@ import java.util.List;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.NoResultException;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.TypedQuery;
+import no.hvl.dat109.model.Brett;
 import no.hvl.dat109.model.Rute;
 
 /**
@@ -22,6 +22,7 @@ public class RuteRepo implements CrudRepository {
 	public RuteRepo() {
 		emf = Persistence.createEntityManagerFactory("stigespillPersistenceUnit");
 	}
+
 	public RuteRepo(EntityManagerFactory emf) {
 		this.emf = emf;
 	}
@@ -38,12 +39,23 @@ public class RuteRepo implements CrudRepository {
 			em.close();
 		}
 	}
-@Override
+
+	@Override
 	public Rute findById(int id) {
 		EntityManager em = emf.createEntityManager();
 
 		try {
 			return em.find(Rute.class, id);
+		} finally {
+			em.close();
+		}
+	}
+
+	public Brett findBrett(int id) {
+		EntityManager em = emf.createEntityManager();
+
+		try {
+			return em.find(Brett.class, id);
 		} finally {
 			em.close();
 		}

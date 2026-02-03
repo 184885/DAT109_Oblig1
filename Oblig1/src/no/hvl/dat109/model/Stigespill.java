@@ -45,8 +45,8 @@ public class Stigespill {
 	 * Oppretter eit spill med MAX_ANTALL spillere og gitt brett.
 	 * @param brett, liste med ønska ruter
 	 */
-	public Stigespill(List<Rute> brett) {
-		this.brett = new Brett(brett);
+	public Stigespill(Brett brett) {
+		this.brett = brett;
 		this.kopp = new Kopp();
 		for (int i = 0; i < MAX_ANTALL; i++) {
 			spillere.add(new Spiller());
