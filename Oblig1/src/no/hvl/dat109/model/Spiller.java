@@ -22,6 +22,10 @@ public class Spiller {
 		this.iFengsel = false;
 	}
 
+	public Brikke getBrikke() {
+		return brikke;
+	}
+
 	/**
 	 * Spiller gjør eit trekk i stigespillet
 	 * 

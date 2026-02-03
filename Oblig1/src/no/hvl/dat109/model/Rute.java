@@ -25,10 +25,20 @@ public abstract class Rute {
 	@JoinColumn(name = "brettID")
 	  private Brett brett;
 
-	
 	@ManyToOne
 	@JoinColumn(name = "rute_type", insertable = false, updatable = false)
 	private DType type;
+
+	
+	public int getId() {
+		return ruteID;
+	}
+
+
+	public void setRuteID(int ruteID) {
+		this.ruteID = ruteID;
+	}
+
 
 	protected abstract Rute landetPaa();
 
