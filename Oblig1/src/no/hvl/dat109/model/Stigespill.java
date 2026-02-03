@@ -20,6 +20,7 @@ public class Stigespill {
 
 	// Konstruktører
 	/**
+	 * @deprecated
 	 * Oppretter eit spill med MAX_ANTALL spillere og eit tomt brett
 	 */
 	public Stigespill() {
@@ -32,6 +33,7 @@ public class Stigespill {
 		vunnet = false;
 	}
 	/**
+	 * @deprecated
 	 * Oppretter eit spill med eit gitt antall spillere 
 	 * og eit tomt brett
 	 * @param antallSpillere er ønska antall spillere
@@ -65,6 +67,12 @@ public class Stigespill {
 	 * Starter eit spill stigespill
 	 */
 	public void spill() {
+		//Setter alle spillerbrikker på start
+		Rute start = brett.finnRute(1);
+		for(Spiller spiller:spillere) {
+			spiller.getBrikke().setRute(start);
+		}
+		
 		while(!vunnet) {
 			spillRunde();
 		}

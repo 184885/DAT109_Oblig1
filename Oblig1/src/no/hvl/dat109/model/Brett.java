@@ -52,4 +52,13 @@ public class Brett {
 		//TODO
 		return null;
 	}
+/**
+ * Finner rute med gitt id 
+ * @param id
+ * @return rute
+ */
+	public Rute finnRute(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
