@@ -4,6 +4,7 @@ package no.hvl.dat109.model;
  * Simulerer ein spiller.
  * 
  * @author June Volden
+ * @author Brage Brekkeflat
  */
 public class Spiller {
 	private String navn;
@@ -27,10 +28,10 @@ public class Spiller {
 	 * @param kopp
 	 * @param brett
 	 */
-	public void spillTrekk(Kopp kopp, Brett brett) {
+	public String spillTrekk(Kopp kopp, Brett brett) {
 		kopp.trill();
 		int sum = kopp.getSum();
-
+		return navn + "har flyttet " + sum + " ruter";
 	}
 	
 	/**

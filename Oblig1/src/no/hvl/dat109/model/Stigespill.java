@@ -5,6 +5,7 @@ import java.util.List;
 
 /**
  * @author June Volden
+ * @author Brage Brekkeflat
  */
 public class Stigespill {
 	// Objektvariabler
@@ -72,7 +73,7 @@ public class Stigespill {
 	 */
 	private void spillRunde() {
 		for(Spiller spiller:spillere) {
-			spiller.spillTrekk(kopp, brett);
+			System.out.println(spiller.spillTrekk(kopp, brett));
 			spillVunnet(spiller);
 		}
 	}
