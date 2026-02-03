@@ -12,8 +12,9 @@ public class Main {
 	public static void main(String[] args) {
 
 		service.init();
-		service.spill();
 		service.close();
+		service.spill();
+		
 	}
 	
 }

@@ -92,7 +92,9 @@ public class Stigespill {
 	 */
 	private void spillVunnet(Spiller s) {
 		if(!vunnet) {
-			vunnet = s.spillVunnet();
+			//TODO privat rute maal?
+			Rute maal  = brett.finnRute(100);
+			vunnet = maal.equals(s.getBrikke().getRute());
 		}
 	}
 	

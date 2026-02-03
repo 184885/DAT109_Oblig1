@@ -69,14 +69,4 @@ public class Spiller {
 		}
 	}
 
-	/**
-	 * Sjekker om spiller har vunnet spillet
-	 * 
-	 * @return om spiller har vunnet spillet
-	 */
-	public boolean spillVunnet() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }
