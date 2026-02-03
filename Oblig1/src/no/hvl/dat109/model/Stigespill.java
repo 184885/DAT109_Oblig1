@@ -28,7 +28,7 @@ public class Stigespill {
 		this.kopp = new Kopp();
 		this.spillere = new ArrayList<>(MAX_ANTALL);
 		for (int i = 0; i < MAX_ANTALL; i++) {
-			spillere.add(new Spiller(i));
+			spillere.add(new Spiller(i+1));
 		}
 		vunnet = false;
 	}

@@ -26,7 +26,7 @@ public abstract class Rute {
 	  private Brett brett;
 
 	@ManyToOne
-	@JoinColumn(name = "rute_type", insertable = false, updatable = false)
+	@JoinColumn(name = "rute_type")
 	private DType type;
 
 	

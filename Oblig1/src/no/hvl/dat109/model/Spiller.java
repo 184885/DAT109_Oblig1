@@ -19,6 +19,7 @@ public class Spiller {
 
 	public Spiller(int nummer) {
 		this.navn = "Spiller " + nummer;
+		this.brikke = new Brikke();
 		this.iFengsel = false;
 	}
 
