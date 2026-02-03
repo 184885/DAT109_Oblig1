@@ -6,6 +6,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+/**
+ * Forhold i databasen
+ * 
+ * @author June Volden
+ */
 
 @Entity
 @Table(schema = "dat109_o1")

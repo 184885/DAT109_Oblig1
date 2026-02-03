@@ -24,14 +24,14 @@ public class Brett {
 	@OneToMany(mappedBy = "brett")
 	private List<Rute> ruter;
 
+	// Konstruktør
 	public Brett() {
-
 	}
-
 	public Brett(List<Rute> ruter) {
 		this.ruter = ruter;
 	}
 
+	// Get metoder
 	public List<Rute> getRuter() {
 		return ruter;
 	}

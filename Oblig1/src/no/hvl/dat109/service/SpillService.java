@@ -27,10 +27,6 @@ public class SpillService {
 
 		ruteRepo = new RuteRepo(emf);
 	}
-	
-	private List<Rute> finnAlleRuter() {
-		return ruteRepo.findAll();
-	}
 
 	/**
 	 * Initialiserer spillet, og starte alle spillere på startrute
