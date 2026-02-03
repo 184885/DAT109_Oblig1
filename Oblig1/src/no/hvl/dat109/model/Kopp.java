@@ -3,7 +3,7 @@ package no.hvl.dat109.model;
 /**
  * Simulering av kopp for stigespill
  * 
- * @author June Volden
+ * @author June Volden, Leah Hagen Monsen
  */
 public class Kopp {
 	private Terning terning;
@@ -11,6 +11,11 @@ public class Kopp {
 
 	public Kopp() {
 		this.terning = new Terning();
+		this.sum = 0;
+	}
+	
+	public Kopp(Terning terning) {
+		this.terning = terning;
 		this.sum = 0;
 	}
 

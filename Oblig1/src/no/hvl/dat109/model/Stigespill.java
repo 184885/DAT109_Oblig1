@@ -3,7 +3,7 @@ package no.hvl.dat109.model;
 import java.util.List;
 
 /**
- * @author June Volden
+ * @author June Volden, Leah Hagen Monsen
  */
 public class Stigespill {
 	// Objektvariabler
@@ -80,6 +80,31 @@ public class Stigespill {
 			vunnet = s.spillVunnet();
 		}
 	}
+	
+	/**
+	 * Getters av verdier.
+	 */
+	
+	public Kopp getKopp() {
+		return kopp;
+	}
+	public List<Spiller> getSpillere() {
+		return spillere;
+	}
+	public Brett getBrett() {
+		return brett;
+	}
+	public boolean isVunnet() {
+		return vunnet;
+	}
+	public static int getMaxAntall() {
+		return MAX_ANTALL;
+	}
+	public static int getMinAntall() {
+		return MIN_ANTALL;
+	}
+	
+	
 	
 
 }
