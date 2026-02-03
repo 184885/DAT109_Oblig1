@@ -1,0 +1,85 @@
+package no.hvl.dat109.model;
+
+import java.util.List;
+
+/**
+ * @author June Volden
+ */
+public class Stigespill {
+	// Objektvariabler
+	private Kopp kopp;
+	private List<Spiller> spillere;
+	private Brett brett;
+	private boolean vunnet;
+	private final static int MAX_ANTALL = 4;
+	private final static int MIN_ANTALL = 2;
+
+	// Konstruktører
+	/**
+	 * Oppretter eit spill med MAX_ANTALL spillere og eit tomt brett
+	 */
+	public Stigespill() {
+		this.brett = new Brett();
+		this.kopp = new Kopp();
+		for (int i = 0; i < MAX_ANTALL; i++) {
+			spillere.add(new Spiller());
+		}
+		vunnet = false;
+	}
+	/**
+	 * Oppretter eit spill med eit gitt antall spillere 
+	 * og eit tomt brett
+	 * @param antallSpillere er ønska antall spillere
+	 */
+	public Stigespill(int antallSpillere) {
+		this.brett = new Brett();
+		this.kopp = new Kopp();
+		int antall = Math.max(MIN_ANTALL, Math.min(antallSpillere, MAX_ANTALL));
+		for (int i = 0; i < antall; i++) {
+			spillere.add(new Spiller());
+		}
+		vunnet = false;
+	}
+	/**
+	 * OBS! Bruk denne!
+	 * Oppretter eit spill med MAX_ANTALL spillere og gitt brett.
+	 * @param brett, liste med ønska ruter
+	 */
+	public Stigespill(List<Rute> brett) {
+		this.brett = new Brett(brett);
+		this.kopp = new Kopp();
+		for (int i = 0; i < MAX_ANTALL; i++) {
+			spillere.add(new Spiller());
+		}
+		vunnet = false;
+	}
+	
+	/**
+	 * Starter eit spill stigespill
+	 */
+	public void spill() {
+		while(!vunnet) {
+			spillRunde();
+		}
+	}
+	
+	/**
+	 * Spiller ein runde av stigespillet
+	 */
+	private void spillRunde() {
+		for(Spiller spiller:spillere) {
+			spiller.spillTrekk(kopp, brett);
+			spillVunnet(spiller);
+		}
+	}
+	/**
+	 * Sjekker om ein spiller har vunnet spillet
+	 */
+	private void spillVunnet(Spiller s) {
+		if(!vunnet) {
+			vunnet = s.spillVunnet();
+		}
+	}
+	
+
+}
