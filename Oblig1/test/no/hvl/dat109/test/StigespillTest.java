@@ -1,9 +1,14 @@
 package no.hvl.dat109.test;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
 
 import no.hvl.dat109.model.Brett;
+import no.hvl.dat109.model.Rute;
 import no.hvl.dat109.model.Stigespill;
+import no.hvl.dat109.model.ruter.MaalRute;
 
 /**
  * Tester Stigepill.
@@ -16,14 +21,44 @@ public class StigespillTest {
 	Brett brett = new Brett();
 	Stigespill stigespill = new Stigespill(brett);
 	
+	Rute vinnerRute = new MaalRute();
+	
 	/**
 	 * Tester spill, skjekker om brikke har flyttet og om spill har avsluttet.
 	 */
 	
 	@Test
 	void testSpill() {
+		
+		//Ser om noen har vunnet først, deretter spiller.
+		assertFalse(stigespill.isVunnet());
+		
+		//TODO - kan ikke konfirmere om brikkene blir plassert på finnRute(1)
+		stigespill.spill(); 
+//		assertTrue(stigespill.getSpillere().forEach(x -> x.getBrikke().getRute().getId()) == 1);
+		assertTrue(stigespill.isVunnet());
+		//Finne ut om spillere spiller. (spillRunde())
+	}
+	
+	/**
+	 * Her simulerer vi et spill som blir vunnet med en gang.
+	 */
+	
+	void testSpillVunnetMedEnGang() {
+		
+		assertFalse(stigespill.isVunnet());
+		
+		//Når noen har vunnet, sjekk om spillet er slutt.
+		stigespill.getSpillere().forEach(x -> x.getBrikke().setRute(vinnerRute));
+				
+		//TODO - Har ikke måte på å finne ut om spillere flytter på seg
+		//selv om spillet er slutt, dessuten kan ikke unngå å sette brikkene
+		//på rute nr.1 pga. spill() metoden.
+		assertTrue(stigespill.isVunnet());
 		stigespill.spill();
-		//TODO - mangler 
+		assertTrue(stigespill.isVunnet());
+		
+		//Finne ut om spillere spiller. (spillRunde())
 	}
 	
 	/**
@@ -31,8 +66,12 @@ public class StigespillTest {
 	 */
 	
 	@Test
-	void spillRunde() {
-		//TODO - mangler
+	void testSpillRunde() {
+		//TODO - mangler metoder og måter å finne ut av om en runde blir spilt
+		
+		//Her må Spiller.spillTrekk() skjekke om spiller gjør et trekk.
+		//Testes i SpillerTest
+		
 	}
 	
 }

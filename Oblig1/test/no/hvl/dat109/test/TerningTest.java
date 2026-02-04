@@ -16,6 +16,7 @@ import no.hvl.dat109.model.Terning;
 public class TerningTest {
 
 	Terning terning = new Terning();
+	List<Integer> terningSidene = List.of(1,2,3,4,5,6);
 	
 	/**
 	 * Tester trill funksjonen til terningen og skjekker om den verdien som blir trillet
@@ -24,10 +25,20 @@ public class TerningTest {
 	
 	@Test
 	void testTrill() {
-		List<Integer> terningSidene = List.of(1,2,3,4,5,6);
 		terning.trill();
 		assertTrue(terningSidene.contains(terning.getVerdi()));
-		terning.trill();
-		assertTrue(terningSidene.contains(terning.getVerdi()));
+	}
+	
+	/**
+	 * Test terningen mange ganger for å skjekke om den garantert
+	 * triller tall i mengden fra 1 til 6.
+	 */
+	
+	@Test
+	void testTrillMangeGanger() {
+		for (int i=0; i < 1000; i++) {
+			terning.trill();
+			assertTrue(terningSidene.contains(terning.getVerdi()));
+		}
 	}
 }

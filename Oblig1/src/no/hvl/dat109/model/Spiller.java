@@ -5,6 +5,7 @@ package no.hvl.dat109.model;
  * 
  * @author June Volden
  * @author Brage Brekkeflat
+ * @author Leah Hagen Monsen
  */
 public class Spiller {
 	private String navn;
@@ -25,6 +26,10 @@ public class Spiller {
 
 	public Brikke getBrikke() {
 		return brikke;
+	}
+	
+	public boolean isFengsel() {
+		return iFengsel;
 	}
 
 	/**
