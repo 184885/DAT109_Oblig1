@@ -13,7 +13,11 @@ public abstract class Rute {
 
 	private int ruteID;
 	
+<<<<<<< HEAD
 	private Brett brett;
+=======
+	  private Brett brett;
+>>>>>>> 575f8c6 (superklasse til entiteter)
 
 	private DType type;
 
