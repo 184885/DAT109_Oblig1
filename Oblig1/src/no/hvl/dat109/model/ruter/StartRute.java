@@ -3,7 +3,7 @@ package no.hvl.dat109.model.ruter;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import no.hvl.dat109.model.Rute;
+import no.hvl.dat109.model.entity.Rute_v1;
 
 /**
  * @author June Volden
@@ -11,10 +11,10 @@ import no.hvl.dat109.model.Rute;
 @Entity
 @Table(schema = "dat109_o1")
 @DiscriminatorValue("2")
-public class StartRute extends Rute {
+public class StartRute extends Rute_v1 {
 
 	@Override
-	protected Rute landetPaa() {
+	protected Rute_v1 landetPaa() {
 		return this;
 	}
 

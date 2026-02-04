@@ -2,26 +2,22 @@ package no.hvl.dat109.model;
 
 import java.util.List;
 
-import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
 
 /**
  * Simulerer eit brett i stigespillet
  * 
  * @author June Volden
  */
-@Entity
-@Table(schema = "dat109_o1")
+@MappedSuperclass
 public class Brett {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	private int id;
 
-	@OneToMany(mappedBy = "brett")
 	private List<Rute> ruter;
 
 	// Konstruktør
