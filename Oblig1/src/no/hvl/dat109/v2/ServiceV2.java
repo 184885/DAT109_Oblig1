@@ -33,8 +33,8 @@ public class ServiceV2 {
 			brikker.add(new Brikke());
 		}
 
-		SpillBrett brett = new SpillBrett(ruteRepo.findBrett(1).getRuter(), brikker);
-		spill = new Stigespill2(brett);
+		SpillBrett brett = new SpillBrett(ruteRepo.findBrett(1).getRuter2(), brikker);
+		spill = new Stigespill(brett);
 	}
 
 	/**

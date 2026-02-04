@@ -60,7 +60,7 @@ VALUES(3,10),
 
 -- Slanger
 INSERT INTO flytt
-VALUES(99,1,7),
+VALUES(99,2,7),
 (56,43,7),
 (70,65,7);
 

@@ -7,7 +7,7 @@ import jakarta.persistence.Table;
  * @author June Volden
  */
 @Entity
-@Table(schema = "dat109_o1")
+@Table(schema = "dat109_o1_v2")
 @DiscriminatorValue("5")
 public class FlyttStartRute extends Rute2{
 
