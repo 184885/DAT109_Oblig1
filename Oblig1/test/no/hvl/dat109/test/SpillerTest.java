@@ -1,11 +1,14 @@
 package no.hvl.dat109.test;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import org.junit.jupiter.api.Test;
 
-import no.hvl.dat109.model.Brikke;
+import no.hvl.dat109.model.Brett;
+import no.hvl.dat109.model.Kopp;
 import no.hvl.dat109.model.Spiller;
+import no.hvl.dat109.model.Terning;
 
 /**
  * Tester spillerene.
@@ -16,6 +19,15 @@ import no.hvl.dat109.model.Spiller;
 public class SpillerTest {
 
 	Spiller spiller = new Spiller();
+	Kopp kopp = new Kopp();
+	Brett brett = new Brett();
+	
+	Terning terningAlltidSeks = new Terning() {
+		public void trill() {}
+		public int getVerdi() {return 6;}
+	};
+	
+	Kopp koppAlltidSeks = new Kopp(terningAlltidSeks);
 	
 	
 	
@@ -25,7 +37,7 @@ public class SpillerTest {
 	
 	@Test
 	void spillTrekkTest() {
-		//TODO - mangler metoder fra spiller.
+		//Lagrer ruten brikken var på før trekket.
 		int rutenFoerTrekk = spiller.getBrikke().getRute().getId();
 		spiller.spillTrekk(kopp, brett);
 		
@@ -40,18 +52,16 @@ public class SpillerTest {
 	
 	@Test
 	void fengselTest() {
-		//TODO - mangler metoder fra spiller.
 		//Spiller skjekker fengsel metode.
 		//iFengsel = false
 		assertFalse(spiller.isFengsel());
 		
 		//Spiller kaster tre seksere.
 		spiller.spillTrekk(koppAlltidSeks, brett);
-		spiller.fengsel(koppAlltidSeks.getSum());
 		
 		//Spiller skjekker fengsel metode.
 		//iFengsel = true
 		assertTrue(spiller.isFengsel());
-		assertTrue(spiller.getBrikke().getRute().getId == 1);
+		assertTrue(spiller.getBrikke().getRute() == null);
 	}
 }
