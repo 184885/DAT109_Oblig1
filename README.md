@@ -28,7 +28,15 @@ _(kan gjøres ved ein funksjon som tar inn sum før denne endres og rekonstruere
 > * står i fengsel
 > * trillet ut av fengsel
 
-  
+### KODE:
+* Legge til Access på MappedSuperClass
+	* DType
+	* Brett
+	* Rute
+* Legge til tilhøyrande Access på entitetane
+´´´
+@Access(AccessType.FIELD)
+´´´
 ### TEST:
 * Brett må testes
 	- gyldigRute
