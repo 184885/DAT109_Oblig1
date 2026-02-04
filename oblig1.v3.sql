@@ -1,7 +1,7 @@
-DROP SCHEMA IF EXISTS dat109_o1 CASCADE;
+DROP SCHEMA IF EXISTS dat109_o1_v2 CASCADE;
 
-CREATE SCHEMA dat109_o1;
-SET search_path TO dat109_o1;
+CREATE SCHEMA dat109_o1_v2;
+SET search_path TO dat109_o1_v2;
 
 CREATE TABLE brett(
   id SERIAL PRIMARY KEY,
@@ -14,9 +14,9 @@ CREATE TABLE dtype(
 
 CREATE TABLE rute(
     ruteID INT PRIMARY KEY,
-    brettID INT NOT NULL,
+    brettID INT NOT NULL DEFAULT 1,
     rute_type INT NOT NULL DEFAULT 1,
-    FOREIGN KEY (brettID) REFERENCESbrett(id) DEFAULT 1,
+    FOREIGN KEY (brettID) REFERENCES brett(id),
     FOREIGN KEY (rute_type) REFERENCES dtype(id));
 
 CREATE TABLE flytt(
@@ -28,7 +28,7 @@ CREATE TABLE flytt(
     FOREIGN KEY (flytt_type) REFERENCES dtype(id)
     );
 
-INSERT INTO brettID
+INSERT INTO brett
 VALUES(1,'hovudbrett');
 
 INSERT INTO dtype
@@ -42,19 +42,23 @@ VALUES(1,'vanlig'),
 (8,'stige');
 
 INSERT INTO rute(ruteID, rute_type)
-VALUES(0, 3),
-(1,2),
+VALUES(1,2),
 (100,4);
 
 INSERT INTO rute(ruteID)
 SELECT *
 FROM GENERATE_SERIES(2,99);
 
+
+-- Stiger
 INSERT INTO flytt(start,slutt)
 VALUES(3,10),
+(5,10),
+(17,28),
 (55,72),
 (44,65);
 
+-- Slanger
 INSERT INTO flytt
 VALUES(99,1,7),
 (56,43,7),
