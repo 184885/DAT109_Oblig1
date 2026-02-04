@@ -2,25 +2,34 @@ package no.hvl.dat109.model;
 
 import java.util.List;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.MappedSuperclass;
 /**
  * Forhold i databasen
  * 
  * @author June Volden
  */
 
-@Entity
-@Table(schema = "dat109_o1")
+@MappedSuperclass
 public class DType {
-	@Id
+
 	private Integer id;
 	private String navn;
 	
-	@OneToMany(mappedBy="type")
+
 	private List<Rute> ruter;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public String getNavn() {
+		return navn;
+	}
+
+	public List<Rute> getRuter() {
+		return ruter;
+	}
+	
 	
 	
 }

@@ -7,12 +7,35 @@
              
 	<persistence-unit name="stigespillPersistenceUnit" transaction-type="RESOURCE_LOCAL">
 
- 		<class>no.hvl.dat109.model.Rute</class>
-		<class>no.hvl.dat109.model.Brett</class>
-		<class>no.hvl.dat109.model.DType</class>
+
+ 		<class>no.hvl.dat109.model.entity.Rute_v1</class>
+		<class>no.hvl.dat109.model.entity.Brett_v1</class>
+		<class>no.hvl.dat109.model.entity.DType_v1</class>
 		<class>no.hvl.dat109.model.ruter.MaalRute</class>
 		<class>no.hvl.dat109.model.ruter.StartRute</class>
 		<class>no.hvl.dat109.model.ruter.VanligRute</class>
+
+		<properties>
+		    <!--  Generelle JPA properties -->
+			<property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+			
+			<!--  Erstatt verdiene her med egen database (xxxx), bruker (xxxx) og passord (yyyy) -->
+			<property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://ider-database.westeurope.cloudapp.azure.com:5433/h184885"/>
+			<property name="jakarta.persistence.jdbc.user" value="h184885"/>
+		    
+			
+			<!--  EclipseLink properties -->
+            <!--  Se https://wiki.eclipse.org/EclipseLink/Examples/JPA/Logging -->
+            <property name="eclipselink.logging.level" value="WARNING"/>
+		</properties>
+		
+	</persistence-unit>
+	<persistence-unit name="stigespillPersistenceUnit" transaction-type="RESOURCE_LOCAL">
+
+ 		<class>no.hvl.dat109.model.Rute</class>
+		<class>no.hvl.dat109.model.Brett</class>
+		<class>no.hvl.dat109.model.DType</class>
+
 		
 		<!-- v2 klasser -->
 		<class>no.hvl.dat109.model.v2.entitet.Rute2</class>

@@ -8,6 +8,8 @@ import jakarta.persistence.Persistence;
 import jakarta.persistence.TypedQuery;
 import no.hvl.dat109.model.Brett;
 import no.hvl.dat109.model.Rute;
+import no.hvl.dat109.model.entity.Brett_v1;
+import no.hvl.dat109.model.entity.Rute_v1;
 
 /**
  * Klasse for å kontakte database Rute er T Integer er id
@@ -33,7 +35,7 @@ public class RuteRepo implements CrudRepository {
 		String jpqlQuery = "select r from Rute r";
 
 		try {
-			TypedQuery<Rute> query = em.createQuery(jpqlQuery, Rute.class);
+			TypedQuery<Rute> query = em.createQuery(jpqlQuery, Rute_v1.class);
 			return query.getResultList();
 		} finally {
 			em.close();
@@ -45,7 +47,7 @@ public class RuteRepo implements CrudRepository {
 		EntityManager em = emf.createEntityManager();
 
 		try {
-			return em.find(Rute.class, id);
+			return em.find(Rute_v1.class, id);
 		} finally {
 			em.close();
 		}
@@ -55,7 +57,7 @@ public class RuteRepo implements CrudRepository {
 		EntityManager em = emf.createEntityManager();
 
 		try {
-			return em.find(Brett.class, id);
+			return em.find(Brett_v1.class, id);
 		} finally {
 			em.close();
 		}
