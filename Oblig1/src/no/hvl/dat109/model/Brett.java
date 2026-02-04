@@ -51,6 +51,7 @@ public class Brett {
 	 * @param plass 
 	 * @return 
 	 */
+
 	public Rute finnRute(Rute plass, int sum) {
 		int id = plass.getId();
 		int nyId = id+sum;
@@ -63,5 +64,6 @@ public class Brett {
  */
 	public Rute finnRute(int id) {
 		return ruter.stream().filter(r->r.getId()==id).findAny().orElse(null);
+
 	}
 }
