@@ -1,5 +1,6 @@
 package no.hvl.dat109.v2.entitet;
 
+<<<<<<< HEAD
 import java.util.List;
 
 import jakarta.persistence.DiscriminatorColumn;
@@ -12,11 +13,19 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+=======
+import jakarta.persistence.DiscriminatorColumn;
+import jakarta.persistence.DiscriminatorType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+>>>>>>> 8ed9e95 (lagt til entiter til v2 med slanger og stiger)
 import jakarta.persistence.Table;
 import no.hvl.dat109.model.Rute;
 /**
 * @author June Volden
 */
+<<<<<<< HEAD
 @Entity(name = "rute")
 @Table(schema = "dat109_o1_v2")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -52,6 +61,13 @@ public abstract class Rute2 extends Rute{
 	}
 
 	protected abstract Rute2 landetPaa();
+=======
+@Entity
+@Table(schema = "dat109_o1_v2")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "rute_type", discriminatorType = DiscriminatorType.STRING)
+public abstract class Rute2 extends Rute{
+>>>>>>> 8ed9e95 (lagt til entiter til v2 med slanger og stiger)
 
 	
 

@@ -8,7 +8,11 @@ import no.hvl.dat109.model.Rute;
  * @author June Volden
  */
 @Entity
+<<<<<<< HEAD
 @Table(schema = "dat109_o1_v2")
+=======
+@Table(schema = "dat109_o1")
+>>>>>>> 8ed9e95 (lagt til entiter til v2 med slanger og stiger)
 @DiscriminatorValue("2")
 public class StartRute2 extends Rute2{
 

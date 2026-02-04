@@ -4,12 +4,22 @@ import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+<<<<<<< HEAD
+=======
+import jakarta.persistence.IdClass;
+>>>>>>> 8ed9e95 (lagt til entiter til v2 med slanger og stiger)
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+<<<<<<< HEAD
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+=======
+import jakarta.persistence.Table;
+import no.hvl.dat109.model.Rute;
+import no.hvl.dat109.model.DType;
+>>>>>>> 8ed9e95 (lagt til entiter til v2 med slanger og stiger)
 
 /**
  * @author June Volden
@@ -21,6 +31,7 @@ import jakarta.persistence.Table;
 public abstract class Flytt {
 	@ManyToOne
 	@JoinColumn(name="flytt_type", insertable=false, updatable=false)
+<<<<<<< HEAD
 	private DType2 type; 
 	
 	@Id
@@ -31,4 +42,16 @@ public abstract class Flytt {
     @ManyToOne
     @JoinColumn(name="slutt")
 	private Rute2 slutt;
+=======
+	private DType type; 
+	
+	@Id
+    @ManyToOne
+    @JoinColumn(name="start")
+	private Rute start;
+	
+    @ManyToOne
+    @JoinColumn(name="slutt")
+	private Rute slutt;
+>>>>>>> 8ed9e95 (lagt til entiter til v2 med slanger og stiger)
 }
