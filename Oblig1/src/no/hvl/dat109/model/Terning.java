@@ -35,7 +35,7 @@ public class Terning {
 	 * Triller terning
 	 */
 	public void trill() {
-		verdi = r.nextInt(min, max);
+		verdi = r.nextInt(min, max+1);
 	}
 
 }
