@@ -43,6 +43,6 @@ public class Brett {
 	 * Finner rute på brettet
 	 */
 	public void finnRute() {
-
+		
 	}
 }

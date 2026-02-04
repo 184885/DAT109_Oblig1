@@ -10,6 +10,7 @@ public class Spiller {
 	private String navn;
 	private boolean iFengsel;
 	private Brikke brikke;
+	private int rute;
 
 	public Spiller() {
 		this.navn = "Spiller";
@@ -31,7 +32,11 @@ public class Spiller {
 	public String spillTrekk(Kopp kopp, Brett brett) {
 		kopp.trill();
 		int sum = kopp.getSum();
-		return navn + "har flyttet " + sum + " ruter";
+		
+		rute = flyttBrikke(rute, sum);
+		 
+		
+		return navn + " har flyttet " + sum + " ruter. Spilleren er nå på rute: " + rute; 
 	}
 	
 	/**
@@ -47,12 +52,27 @@ public class Spiller {
 	}
 	
 	/**
+	 * Flytter brikke viss sum+rute <100
+	 * Viss det blir større så returneres kun orginal rute
+	 */
+	
+	public int flyttBrikke(int rute, int sum){
+		
+		if(rute+sum>100) {
+			return rute;
+		}
+		return rute+sum;
+	}
+	/**
 	 * Sjekker om spiller har vunnet spillet
 	 * 
 	 * @return om spiller har vunnet spillet
+	 * når en spiller har vunnet vil de andre spillerene kunne fullføre runden sinn
 	 */
 	public boolean spillVunnet() {
-		// TODO Auto-generated method stub
+		if(rute==100) {
+			return true;
+		}
 		return false;
 	}
 	
