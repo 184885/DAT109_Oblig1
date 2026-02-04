@@ -4,6 +4,8 @@ Sjølve javaprosjektet finnes under mappa Oblig1
 MERK! Det er denne mappa som skal importeres inn i IDE
 ikkje heile repositoriet.
 
+Databasen bruker v4 av sql-fila.
+
 Programmet kjøres frå Main.java 
 
 Tester legges under `test` source-mappa.
