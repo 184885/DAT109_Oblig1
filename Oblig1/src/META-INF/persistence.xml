@@ -30,16 +30,10 @@
 		</properties>
 		
 	</persistence-unit>
-<<<<<<< HEAD
+
+
 	<persistence-unit name="stigespillV2" transaction-type="RESOURCE_LOCAL">
-=======
-	<persistence-unit name="stigespillPersistenceUnit" transaction-type="RESOURCE_LOCAL">
 
- 		<class>no.hvl.dat109.model.Rute</class>
-		<class>no.hvl.dat109.model.Brett</class>
-		<class>no.hvl.dat109.model.DType</class>
-
->>>>>>> 575f8c6 (superklasse til entiteter)
 		
 		<!-- v2 klasser -->
 		<class>no.hvl.dat109.v2.entitet.Brett2</class>
