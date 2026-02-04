@@ -8,7 +8,7 @@ import no.hvl.dat109.model.Rute;
  * @author June Volden
  */
 @Entity
-@Table(schema = "dat109_o1")
+@Table(schema = "dat109_o1_v2")
 @DiscriminatorValue("2")
 public class StartRute2 extends Rute2{
 

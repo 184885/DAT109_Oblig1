@@ -1,11 +1,12 @@
 package no.hvl.dat109.v2;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 import jakarta.persistence.TypedQuery;
+import no.hvl.dat109.model.Rute;
 import no.hvl.dat109.repo.CrudRepository;
 import no.hvl.dat109.v2.entitet.Brett2;
 import no.hvl.dat109.v2.entitet.Rute2;
@@ -25,13 +26,19 @@ public class RuteRepo2 implements CrudRepository {
 	}
 
 	@Override
-	public List<Rute2> findAll() {
+	public List<Rute> findAll() {
 		EntityManager em = emf.createEntityManager();
 		String jpqlQuery = "select r from Rute r";
 
 		try {
 			TypedQuery<Rute2> query = em.createQuery(jpqlQuery, Rute2.class);
-			return query.getResultList();
+			List<Rute2> liste =  query.getResultList();
+			List<Rute> res = new ArrayList<>();
+			liste.stream().forEach(x->res.add((Rute) x));
+			
+			return res;
+
+			
 		} finally {
 			em.close();
 		}
@@ -57,4 +64,39 @@ public class RuteRepo2 implements CrudRepository {
 			em.close();
 		}
 	}
+
+	public List<Rute2> findAll(int id) {
+		EntityManager em = emf.createEntityManager();
+		String jpqlQuery = """
+				select r
+				from Rute r,
+				r.brett b
+				where b.id = :id
+				""";
+//				"select r from Rute2 r where r.brett like :id";
+
+		try {
+			TypedQuery<Rute2> query = em.createQuery(jpqlQuery, Rute2.class);
+			query.setParameter("id", id);
+			return  query.getResultList();
+			
+		} finally {
+			em.close();
+		}
+	}
+	public List<Rute2> findAllRuter() {
+		EntityManager em = emf.createEntityManager();
+		String jpqlQuery = "select r from Rute r";
+
+		try {
+			TypedQuery<Rute2> query = em.createQuery(jpqlQuery, Rute2.class);
+			List<Rute2> liste =  query.getResultList();
+
+			return liste;
+			
+		} finally {
+			em.close();
+		}
+	}
 }
+
