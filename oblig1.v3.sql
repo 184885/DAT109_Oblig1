@@ -1,4 +1,4 @@
-DROP SCHEMA IF EXISTS dat109_o1 CASCADE;
+DROP SCHEMA IF EXISTS dat109_o1_v2 CASCADE;
 
 CREATE SCHEMA dat109_o1_v2;
 SET search_path TO dat109_o1_v2;
@@ -29,7 +29,7 @@ CREATE TABLE flytt(
     );
 
 INSERT INTO brett
-VALUES('hovudbrett');
+VALUES(1,'hovudbrett');
 
 INSERT INTO dtype
 VALUES(1,'vanlig'),

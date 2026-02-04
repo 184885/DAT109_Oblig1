@@ -10,10 +10,20 @@
  		<class>no.hvl.dat109.model.Rute</class>
 		<class>no.hvl.dat109.model.Brett</class>
 		<class>no.hvl.dat109.model.DType</class>
-			<class>no.hvl.dat109.model.ruter.MaalRute</class>
-			<class>no.hvl.dat109.model.ruter.StartRute</class>
-			<class>no.hvl.dat109.model.ruter.VanligRute</class>
+		<class>no.hvl.dat109.model.ruter.MaalRute</class>
+		<class>no.hvl.dat109.model.ruter.StartRute</class>
+		<class>no.hvl.dat109.model.ruter.VanligRute</class>
 		
+		<!-- v2 klasser -->
+		<class>no.hvl.dat109.model.v2.entitet.Rute2</class>
+		<class>no.hvl.dat109.model.v2.entitet.StartRute2</class>
+		<class>no.hvl.dat109.model.v2.entitet.MaalRute2</class>
+		<class>no.hvl.dat109.model.v2.entitet.FlyttStartRute</class>
+		<class>no.hvl.dat109.model.v2.entitet.FlyttSluttRute</class>
+		<class>no.hvl.dat109.model.v2.entitet.Flytt</class>
+		<class>no.hvl.dat109.model.v2.entitet.Slange</class>
+		<class>no.hvl.dat109.model.v2.entitet.Stige</class>
+		<!-- v2 klasser -->
 
 		<properties>
 		    <!--  Generelle JPA properties -->
