@@ -44,7 +44,7 @@ public class Spiller {
 
 		fengsel(sum);
 		if (iFengsel) {
-			brikke.flyttFengsel();
+			brikke.flyttFengsel(brett.finnRute(1));
 			sum -= 6;
 		if(sum<0||sum>=12) {
 			sum = 0;
@@ -70,7 +70,6 @@ public class Spiller {
 		iFengsel = false;
 		if (sum >= 18) {
 			iFengsel = true;
-			brikke.flyttFengsel();
 		}
 	}
 

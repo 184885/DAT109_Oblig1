@@ -28,8 +28,8 @@ public class Brikke {
 	/**
 	 * Flytter ruten til fengsel (ut av spill)
 	 */
-	public void flyttFengsel() {
-		rute = null;
+	public void flyttFengsel(Rute r) {
+		setRute(r);
 	}
 
 
