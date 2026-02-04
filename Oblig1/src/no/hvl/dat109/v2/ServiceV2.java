@@ -1,0 +1,53 @@
+package no.hvl.dat109.v2;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+import no.hvl.dat109.Passwords;
+import no.hvl.dat109.model.Brikke;
+import no.hvl.dat109.model.Stigespill;
+
+public class ServiceV2 {
+
+	private EntityManagerFactory emf;
+	private RuteRepo2 ruteRepo;
+
+	private Stigespill spill;
+
+	public ServiceV2() {
+		emf = Persistence.createEntityManagerFactory("stigespillV2",
+				Map.of("jakarta.persistence.jdbc.password", Passwords.AZURE_PASSWORD));
+
+		ruteRepo = new RuteRepo2(emf);
+	}
+
+	/**
+	 * Initialiserer spillet, og starte alle spillere på startrute
+	 */
+	public void init() {
+		List<Brikke> brikker = new ArrayList<>();
+		for (int i = 0; i < 4; i++) {
+			brikker.add(new Brikke());
+		}
+
+		SpillBrett brett = new SpillBrett(ruteRepo.findBrett(1).getRuter(), brikker);
+		spill = new Stigespill2(brett);
+	}
+
+	/**
+	 * Starter spillet
+	 */
+	public void spill() {
+		if (spill == null) {
+			init();
+		}
+		spill.spill();
+	}
+
+	public void close() {
+		emf.close();
+	}
+}
