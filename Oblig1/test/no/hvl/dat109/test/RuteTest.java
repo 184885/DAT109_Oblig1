@@ -3,6 +3,7 @@ package no.hvl.dat109.test;
 import org.junit.jupiter.api.Test;
 
 import no.hvl.dat109.model.Rute;
+import no.hvl.dat109.model.ruter.StartRute;
 
 /**
  * Tester ruten.
@@ -12,7 +13,7 @@ import no.hvl.dat109.model.Rute;
 
 public class RuteTest {
 	
-	Rute rute = new Rute();
+	Rute start = new StartRute();
 	
 	@Test
 	void testRuterPaaBrettet() {

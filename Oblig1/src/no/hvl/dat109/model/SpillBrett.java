@@ -1,26 +1,30 @@
 package no.hvl.dat109.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import no.hvl.dat109.model.ruter.MaalRute;
-import no.hvl.dat109.model.ruter.StartRute;
 /**
- * @version v.3
+ * @version v.2.1 
  * Spillbrett til bruk i applikasjonen
- * MERK IKKJE I BRUK!
  * @author June Volden
  */
 public class SpillBrett extends Brett {
 	private Rute start;
 	private Rute maal;
 	private List<Brikke> brikker;
-	
+	private static final int startid = 1;
+	private static final int maalid = 1;
+
+	public SpillBrett() {
+		this(new ArrayList<Rute>(),new ArrayList<Brikke>());
+	}
 	public SpillBrett(List<Rute> ruter, List<Brikke> brikker) {
 		super(ruter);
 		this.brikker = brikker;
+		this.setRuter(ruter);
 
-		this.start = ruter.stream().filter(r -> r.getClass().equals(StartRute.class)).findFirst().orElse(null);
-		this.start = ruter.stream().filter(r -> r.getClass().equals(MaalRute.class)).findFirst().orElse(null);
+		this.start = ruter.stream().filter(r -> r.getId() == startid).findFirst().orElse(null);
+		this.maal = ruter.stream().filter(r -> r.getId() == maalid).findFirst().orElse(null);
 	}
 
 	public Rute getStart() {
@@ -29,6 +33,13 @@ public class SpillBrett extends Brett {
 
 	public Rute getMaal() {
 		return maal;
+	}
+	
+	public List<Brikke> getBrikker() {
+		return brikker;
+	}
+	public void setBrikker(List<Brikke> brikker) {
+		this.brikker = brikker;
 	}
 
 }
