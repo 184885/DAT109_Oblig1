@@ -9,6 +9,7 @@ import no.hvl.dat109.model.Brett;
 import no.hvl.dat109.model.Rute;
 import no.hvl.dat109.model.entity.Brett_v1;
 import no.hvl.dat109.model.entity.Rute_v1;
+import no.hvl.dat109.service.Remake;
 
 /**
  * Klasse for å kontakte database Rute er T Integer er id
@@ -36,7 +37,7 @@ public class RuteRepo implements CrudRepository {
 		try {
 			
 			List<Rute_v1> liste =  em.createQuery(jpqlQuery, Rute_v1.class).getResultList();
-			return Remake;
+			return Remake.makeRute(liste);
 		} finally {
 			em.close();
 		}
