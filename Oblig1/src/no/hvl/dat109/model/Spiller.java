@@ -88,6 +88,10 @@ public class Spiller {
 			tekst = "Spilleren er fremdeles i fengsel";
 		}
 		
+		if(rute==100) {
+			tekst = (navn +" har vunnet, og de siste spillerene "
+					+ "får en siste runde!");
+		}
 		String svar = tekst;
 		tekst = "";
 		
@@ -134,8 +138,6 @@ public class Spiller {
 	 */
 	public boolean spillVunnet() {
 		if(rute==100) {
-			System.out.println(navn +" har vunnet, og de siste spillerene "
-					+ "får en siste runde!");
 			
 			return true;
 		}
