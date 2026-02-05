@@ -57,7 +57,7 @@ public class Spiller {
 		if(!iFengsel) {
 			fengsel(sum);
 			if(iFengsel) {
-			//brikke.flyttFengsel(brett.finnRute(1));
+			brikke.flyttFengsel(brett.finnRute(1));
 				skjekk=1;
 			}
 		}	
@@ -65,7 +65,8 @@ public class Spiller {
 			//brikke.flyttFengsel(brett.finnRute(1));
 			sum -= 6;
 			if (sum != 0 || sum != 12) {
-				sum = -1;
+				sum=0;
+				skjekk = -1;
 			}
 			iFengsel=false;
 		}
@@ -81,15 +82,16 @@ public class Spiller {
 		if (!iFengsel) {
 			rute = flyttBrikke(rute, sum);
 				tekst = navn + " har flyttet " + sum + " ruter. Spilleren er nå på rute: " + rute;
+			brikke.setRute(brett.finnRute(rute));	
 		}
-		if(sum==-1) {
+		if(skjekk==-1) {
 			tekst = "Spilleren er fremdeles i fengsel";
 		}
 		
 		String svar = tekst;
 		tekst = "";
 		
-		brikke.setRute(brett.finnRute(rute));
+		
 		return svar;
 	}
 
@@ -132,7 +134,7 @@ public class Spiller {
 	 */
 	public boolean spillVunnet() {
 		if(rute==100) {
-			System.out.print(navn +" har vunnet, og de siste spillerene "
+			System.out.println(navn +" har vunnet, og de siste spillerene "
 					+ "får en siste runde!");
 			
 			return true;
