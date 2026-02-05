@@ -48,7 +48,7 @@ public class Brett {
 	 */
 
 	public Rute finnRute(Rute plass, int sum) {
-		if(plass ==null) {
+		if(plass == null) {
 			return null;
 		}
 		int id = plass.getId();

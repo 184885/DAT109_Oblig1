@@ -78,11 +78,10 @@ public class Spiller {
 		}
 		Rute nyPlass = brett.finnRute(plass, sum);
 		brikke.setRute(nyPlass.landetPaa());
+		rute = brikke.getRute().getId();
 
 		if (!iFengsel) {
-			rute = flyttBrikke(rute, sum);
-				tekst = navn + " har flyttet " + sum + " ruter. Spilleren er nå på rute: " + rute;
-			brikke.setRute(brett.finnRute(rute));	
+				tekst = navn + " har flyttet " + sum + " ruter. Spilleren er nå på rute: " + rute;	
 		}
 		if(skjekk==-1) {
 			tekst = "Spilleren er fremdeles i fengsel";
