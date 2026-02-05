@@ -48,6 +48,7 @@ public class Spiller {
 		if(sum==18) {
 			iFengsel = true;
 			rute=1;
+			sum=0;
 			return "Spilleren har havnet i fengsel og er på rute 1";
 		}
 		fengsel(sum);
@@ -66,11 +67,22 @@ public class Spiller {
 		Rute nyPlass = brett.finnRute(plass,sum);
 		brikke.setRute(nyPlass.landetPaa());
 		
-
-		rute = flyttBrikke(rute, sum);
-		 
+		String tekst = "";
 		
-		return navn + " har flyttet " + sum + " ruter. Spilleren er nå på rute: " + rute; 
+		if(sum==18) {
+			iFengsel = true;
+			rute=1;
+			sum=0;
+			tekst = "Spilleren har havnet i fengsel og er på rute 1";
+		}
+		
+		rute = flyttBrikke(rute, sum);
+		
+		 if(sum!=18) {
+			tekst = navn + " har flyttet " + sum + " ruter. Spilleren er nå på rute: " + rute;
+		}
+		
+		return tekst;
 	}
 
 	/**
