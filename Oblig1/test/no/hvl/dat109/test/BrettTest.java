@@ -91,5 +91,7 @@ public class BrettTest {
 	@Test
 	void testGyldigRute() {
 		//TODO - 
+		Rute gyldigPlass = brett.finnRute(90);
+		assertTrue(brett.gyldigRute(gyldigPlass, 10));
 	}
 }
