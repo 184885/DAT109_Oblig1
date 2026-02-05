@@ -12,6 +12,9 @@ public class Spiller {
 	private boolean iFengsel;
 	private Brikke brikke;
 	private int rute;
+	private int sum;
+	private String tekst;
+	
 
 	public Spiller() {
 		this.navn = "Spiller";
@@ -40,39 +43,71 @@ public class Spiller {
 	 * @param brett
 	 */
 	public String spillTrekk(Kopp kopp, Brett brett) {
-		kopp.trill();
-		int sum = kopp.getSum();
 
-		fengsel(sum);
-		if (iFengsel) {
+
+		sum = 0;
+		
+		while (sum % 6 == 0 && sum != 18) {
+			kopp.trill();
+			sum = sum + kopp.getSum();
+		}
+		
+		//skjekker om personen havnet i fengsel eller fremdeles er i fengsel
+		int skjekk = 0;
+		if(!iFengsel) {
+			fengsel(sum);
+			if(iFengsel) {
 			brikke.flyttFengsel(brett.finnRute(1));
+				skjekk=1;
+			}
+		}	
+		if (iFengsel&&skjekk==0) {
+			//brikke.flyttFengsel(brett.finnRute(1));
 			sum -= 6;
-		if(sum<0||sum>=12) {
-			sum = 0;
+			if (sum != 0 || sum != 12) {
+				sum=0;
+				skjekk = -1;
+			}
+			iFengsel=false;
 		}
-		}
+		
 		Rute plass = brikke.getRute();
-		
-		if(!brett.gyldigRute(plass, sum)) {
+
+		if (!brett.gyldigRute(plass, sum)) {
 			sum = 0;
 		}
-		Rute nyPlass = brett.finnRute(plass,sum);
+		Rute nyPlass = brett.finnRute(plass, sum);
 		brikke.setRute(nyPlass.landetPaa());
+
+		if (!iFengsel) {
+			rute = flyttBrikke(rute, sum);
+				tekst = navn + " har flyttet " + sum + " ruter. Spilleren er nå på rute: " + rute;
+			brikke.setRute(brett.finnRute(rute));	
+		}
+		if(skjekk==-1) {
+			tekst = "Spilleren er fremdeles i fengsel";
+		}
 		
-		rute = flyttBrikke(rute, sum);
+		String svar = tekst;
+		tekst = "";
 		
 		
-		return navn + " har flyttet " + sum + " ruter. Spilleren er nå på rute: " + rute; 
+		return svar;
 	}
 
 	/**
 	 * Sjekker om spiller har trillet 3 seksere på rad. Plasserer isåfall Brikke på
 	 * fengsel ruten (ute av spill)
 	 */
-	private void fengsel(int sum) {
+	private void fengsel(int sum) {	
 		iFengsel = false;
 		if (sum >= 18) {
+			sum=0;
+			rute= 1;
 			iFengsel = true;
+			if(tekst.equals("")) {
+				tekst="Spilleren har havnet i fengsel og er på rute 1";
+			}
 		}
 	}
 	
@@ -86,6 +121,9 @@ public class Spiller {
 		if(rute+sum>100) {
 			return rute;
 		}
+		if(iFengsel) {
+			return 1;
+		}
 		return rute+sum;
 	}
 	/**
@@ -96,9 +134,11 @@ public class Spiller {
 	 */
 	public boolean spillVunnet() {
 		if(rute==100) {
+			System.out.println(navn +" har vunnet, og de siste spillerene "
+					+ "får en siste runde!");
+			
 			return true;
 		}
 		return false;
 	}
-	
 }

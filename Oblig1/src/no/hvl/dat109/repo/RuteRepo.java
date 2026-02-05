@@ -1,5 +1,6 @@
 package no.hvl.dat109.repo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.EntityManager;
@@ -10,6 +11,7 @@ import no.hvl.dat109.model.Brett;
 import no.hvl.dat109.model.Rute;
 import no.hvl.dat109.model.entity.Brett_v1;
 import no.hvl.dat109.model.entity.Rute_v1;
+import no.hvl.dat109.v2.entitet.Rute2;
 
 /**
  * Klasse for å kontakte database Rute er T Integer er id
@@ -35,8 +37,11 @@ public class RuteRepo implements CrudRepository {
 		String jpqlQuery = "select r from Rute r";
 
 		try {
-			TypedQuery<Rute> query = em.createQuery(jpqlQuery, Rute_v1.class);
-			return query.getResultList();
+			
+			List<Rute_v1> liste =  em.createQuery(jpqlQuery, Rute_v1.class).getResultList();
+			List<Rute> res = new ArrayList<>();
+			liste.stream().forEach(x->res.add((Rute) x));
+			return res;
 		} finally {
 			em.close();
 		}
