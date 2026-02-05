@@ -13,21 +13,23 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import no.hvl.dat109.model.Brett;
 import no.hvl.dat109.model.Rute;
+
 /**
-* @author June Volden
-*/
+ * @author June Volden
+ */
 @Entity(name = "rute")
 @Table(schema = "dat109_o1_v2")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "rute_type", discriminatorType = DiscriminatorType.INTEGER)
-public abstract class Rute2 extends Rute{
+public abstract class Rute2 extends Rute {
 	@Id
 	private int ruteID;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "brettID")
-	  private Brett2 brett;
+	private Brett2 brett;
 
 	@ManyToOne
 	@JoinColumn(name = "rute_type")
@@ -35,24 +37,28 @@ public abstract class Rute2 extends Rute{
 
 	@OneToOne(mappedBy = "start")
 	private List<Flytt> startFlytt;
-	
-	@OneToMany(mappedBy="slutt")
+
+	@OneToMany(mappedBy = "slutt")
 	private List<Flytt> flytt;
-	
+
+	@Override
 	public int getId() {
+		super.setId(ruteID);
 		return ruteID;
 	}
 
-	public Brett2 getBrett() {
-		return brett;
+	@Override
+	public Brett getBrett() {
+		super.setBrett(brett);
+		return super.getBrett();
 	}
 
+	@Override
 	public DType2 getType() {
+		super.setType(type);
 		return type;
 	}
 
 	protected abstract Rute2 landetPaa();
-
-	
 
 }

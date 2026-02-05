@@ -36,7 +36,7 @@ public class Stigespill {
 		int antall = Math.max(MIN_ANTALL, Math.min(antallSpillere, MAX_ANTALL));
 		this.spillere = new ArrayList<>(antall);
 		for (int i = 0; i < antall; i++) {
-			Spiller s =new Spiller(i);
+			Spiller s =new Spiller(i+1);
 			spillere.add(s);
 			this.brett.getBrikker().add(s.getBrikke());
 		}

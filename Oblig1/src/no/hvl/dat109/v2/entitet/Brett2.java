@@ -10,6 +10,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import no.hvl.dat109.model.Brett;
+import no.hvl.dat109.model.Rute;
+import no.hvl.dat109.service.Remake;
 
 /**
 * @author June Volden
@@ -32,7 +34,11 @@ public class Brett2 extends Brett{
 	public Brett2(List<Rute2> ruter) {
 		this.ruter = ruter;
 	}
-
+	@Override
+	public List<Rute> getRuter() {
+		super.setRuter(Remake.makeRute2(ruter));
+		return super.getRuter();
+	}
 
 	/**
 	 * Sjekker om ruta er gyldig. Sjekker at spiller ikkje passerer mål.
