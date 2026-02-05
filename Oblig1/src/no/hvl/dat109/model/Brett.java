@@ -14,7 +14,6 @@ import jakarta.persistence.MappedSuperclass;
 @MappedSuperclass
 public class Brett {
 
-@Access(AccessType.FIELD)
 	private List<Rute> ruter;
 
 	// Konstruktør

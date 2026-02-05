@@ -29,6 +29,19 @@ public abstract class Rute {
 	public DType getType() {
 		return type;
 	}
+	
+
+	public void setId(int ruteID) {
+		this.ruteID = ruteID;
+	}
+
+	public void setBrett(Brett brett) {
+		this.brett = brett;
+	}
+
+	public void setType(DType type) {
+		this.type = type;
+	}
 
 	protected abstract Rute landetPaa();
 
