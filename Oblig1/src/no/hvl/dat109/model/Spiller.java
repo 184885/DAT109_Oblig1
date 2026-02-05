@@ -40,9 +40,16 @@ public class Spiller {
 	 * @param brett
 	 */
 	public String spillTrekk(Kopp kopp, Brett brett) {
-		kopp.trill();
-		int sum = kopp.getSum();
-
+		int sum = 0;
+		while(sum%6==0&&sum!=18) {
+			kopp.trill();
+		sum = sum + kopp.getSum();
+		}
+		if(sum==18) {
+			iFengsel = true;
+			rute=1;
+			return "Spilleren har havnet i fengsel og er på rute 1";
+		}
 		fengsel(sum);
 		if (iFengsel) {
 			brikke.flyttFengsel(brett.finnRute(1));
