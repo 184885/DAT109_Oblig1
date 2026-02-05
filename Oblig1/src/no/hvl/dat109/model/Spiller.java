@@ -59,8 +59,9 @@ public class Spiller {
 		Rute nyPlass = brett.finnRute(plass,sum);
 		brikke.setRute(nyPlass.landetPaa());
 		
+
 		rute = flyttBrikke(rute, sum);
-		
+		 
 		
 		return navn + " har flyttet " + sum + " ruter. Spilleren er nå på rute: " + rute; 
 	}
@@ -100,5 +101,4 @@ public class Spiller {
 		}
 		return false;
 	}
-	
 }
