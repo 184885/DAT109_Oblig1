@@ -2,11 +2,9 @@ package no.hvl.dat109.model;
 
 import java.util.List;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
 import jakarta.persistence.MappedSuperclass;
-import jakarta.persistence.OneToMany;
 
 /**
  * Simulerer eit brett i stigespillet
@@ -16,8 +14,7 @@ import jakarta.persistence.OneToMany;
 @MappedSuperclass
 public class Brett {
 
-	private int id;
-
+@Access(AccessType.FIELD)
 	private List<Rute> ruter;
 
 	// Konstruktør
@@ -32,6 +29,9 @@ public class Brett {
 		return ruter;
 	}
 
+	public void setRuter(List<Rute> ruter) {
+		this.ruter = ruter;
+	}
 	/**
 	 * Sjekker om ruta er gyldig. Sjekker at spiller ikkje passerer mål.
 	 * @param sum 

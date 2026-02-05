@@ -2,6 +2,8 @@ package no.hvl.dat109.model.entity;
 
 import java.util.List;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,14 +19,17 @@ import no.hvl.dat109.model.Brett;
  */
 @Entity(name="brett")
 @Table(schema = "dat109_o1")
+
 public class Brett_v1 extends Brett{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
+	@Access(AccessType.FIELD)
 	@OneToMany(mappedBy = "brett")
 	private List<Rute_v1> ruter;
 
+	
+	
 	// Konstruktør
 	public Brett_v1() {
 	}
