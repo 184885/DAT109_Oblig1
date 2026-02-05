@@ -9,6 +9,8 @@ import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import no.hvl.dat109.model.Brett;
+import no.hvl.dat109.model.DType;
 import no.hvl.dat109.model.Rute;
 
 /**
@@ -30,17 +32,22 @@ public abstract class Rute_v1 extends Rute{
 	@JoinColumn(name = "rute_type")
 	private DType_v1 type;
 
-	
+	@Override
 	public int getId() {
+		super.setId(ruteID);
 		return ruteID;
 	}
 
-	public Brett_v1 getBrett() {
-		return brett;
+	@Override
+	public Brett getBrett() {
+		super.setBrett(brett);
+		return (Brett)brett;
 	}
 
-	public DType_v1 getType() {
-		return type;
+	@Override
+	public DType getType() {
+		super.setType(type);
+		return (DType)type;
 	}
 
 	protected abstract Rute_v1 landetPaa();

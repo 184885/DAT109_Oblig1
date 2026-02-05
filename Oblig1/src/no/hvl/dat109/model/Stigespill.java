@@ -13,38 +13,32 @@ public class Stigespill {
 	// Objektvariabler
 	private Kopp kopp;
 	private List<Spiller> spillere;
-	private Brett brett;
+	private SpillBrett brett;
 	private boolean vunnet;
 	private final static int MAX_ANTALL = 4;
 	private final static int MIN_ANTALL = 2;
 
 	// Konstruktører
 	/**
-	 * @deprecated
 	 * Oppretter eit spill med MAX_ANTALL spillere og eit tomt brett
 	 */
 	public Stigespill() {
-		this.brett = new Brett();
-		this.kopp = new Kopp();
-		this.spillere = new ArrayList<>(MAX_ANTALL);
-		for (int i = 0; i < MAX_ANTALL; i++) {
-			spillere.add(new Spiller(i+1));
+		this(MAX_ANTALL);
 		}
-		vunnet = false;
-	}
 	/**
-	 * @deprecated
 	 * Oppretter eit spill med eit gitt antall spillere 
 	 * og eit tomt brett
 	 * @param antallSpillere er ønska antall spillere
 	 */
 	public Stigespill(int antallSpillere) {
-		this.brett = new Brett();
+		this.brett = new SpillBrett();
 		this.kopp = new Kopp();
 		int antall = Math.max(MIN_ANTALL, Math.min(antallSpillere, MAX_ANTALL));
 		this.spillere = new ArrayList<>(antall);
 		for (int i = 0; i < antall; i++) {
-			spillere.add(new Spiller(i));
+			Spiller s =new Spiller(i);
+			spillere.add(s);
+			this.brett.getBrikker().add(s.getBrikke());
 		}
 		vunnet = false;
 	}
@@ -54,14 +48,9 @@ public class Stigespill {
 	 * @param brett, liste med ønska ruter
 	 */
 	public Stigespill(Brett brett) {
-		this.brett = brett;
-		this.kopp = new Kopp();
-		this.spillere = new ArrayList<>(MAX_ANTALL);
-		for (int i = 0; i < MAX_ANTALL; i++) {
-			spillere.add(new Spiller(i+1));
+		this();
+		this.brett = new SpillBrett(brett.getRuter(),this.brett.getBrikker());
 		}
-		vunnet = false;
-	}
 	
 	/**
 	 * Starter eit spill stigespill
