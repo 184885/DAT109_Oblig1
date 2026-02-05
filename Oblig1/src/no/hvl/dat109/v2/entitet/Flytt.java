@@ -12,6 +12,7 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 /**
+ * Samling for slanger og stiger
  * @author June Volden
  */
 @Entity
@@ -31,4 +32,14 @@ public abstract class Flytt {
     @ManyToOne
     @JoinColumn(name="slutt")
 	private Rute2 slutt;
+
+	public Rute2 getStart() {
+		return start;
+	}
+
+	public Rute2 getSlutt() {
+		return slutt;
+	}
+    
+    
 }

@@ -13,8 +13,13 @@ public class FlyttStartRute extends Rute2{
 
 	@Override
 	protected Rute2 landetPaa() {
-		//TODO
-		return null;
+		Flytt f = super.getStartFlytt();
+		Rute2 res = this;
+		while(f!=null) {
+			res = f.getSlutt();
+			f = res.getStartFlytt();
+		}
+		return res;
 	}
 
 }
