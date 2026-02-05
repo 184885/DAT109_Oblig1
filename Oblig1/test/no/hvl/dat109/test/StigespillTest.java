@@ -1,12 +1,17 @@
 package no.hvl.dat109.test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
 import no.hvl.dat109.model.Brett;
 import no.hvl.dat109.model.Rute;
+import no.hvl.dat109.model.Spiller;
 import no.hvl.dat109.model.Stigespill;
 import no.hvl.dat109.model.ruter.MaalRute;
 
@@ -32,9 +37,13 @@ public class StigespillTest {
 		
 		//Ser om noen har vunnet først, deretter spiller.
 		assertFalse(stigespill.isVunnet());
+		List<Spiller> spillere = stigespill.getSpillere();
+		
+		assertTrue(spillere.stream().allMatch(x -> x.getBrikke().getRute() == null)); //Hva om spiller er i fengsel?
 		
 		//TODO - kan ikke konfirmere om brikkene blir plassert på finnRute(1)
 		stigespill.spill(); 
+		assertFalse(spillere.stream().allMatch(x -> x.getBrikke().getRute() == null));
 //		assertTrue(stigespill.getSpillere().forEach(x -> x.getBrikke().getRute().getId()) == 1);
 		assertTrue(stigespill.isVunnet());
 		//Finne ut om spillere spiller. (spillRunde())
@@ -55,7 +64,7 @@ public class StigespillTest {
 		//selv om spillet er slutt, dessuten kan ikke unngå å sette brikkene
 		//på rute nr.1 pga. spill() metoden.
 		assertTrue(stigespill.isVunnet());
-		stigespill.spill();
+		stigespill.spill(); //spill setter alle brikker på rute 1
 		assertTrue(stigespill.isVunnet());
 		
 		//Finne ut om spillere spiller. (spillRunde())

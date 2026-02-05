@@ -1,5 +1,6 @@
 package no.hvl.dat109.test;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
@@ -72,6 +73,10 @@ public class BrettTest {
 		List<Rute> brettetsStiger = brettetsRuter.stream().filter(x -> x.isStige()).toList();
 	}
 	
+	/**
+	 * Tester om vanlige ruter på brettet er riktig representert.
+	 */
+	
 	@Test
 	void testVanligeRuter() {
 		//TODO - kan ikke finne vanlige ruter om det ikke er
@@ -90,8 +95,8 @@ public class BrettTest {
 	
 	@Test
 	void testGyldigRute() {
-		//TODO - 
 		Rute gyldigPlass = brett.finnRute(90);
 		assertTrue(brett.gyldigRute(gyldigPlass, 10));
+		assertFalse(brett.gyldigRute(gyldigPlass, 11));
 	}
 }
