@@ -4,17 +4,26 @@ import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import no.hvl.dat109.model.Rute;
+
 /**
  * @author June Volden
  */
 @Entity
 @Table(schema = "dat109_o1_v2")
 @DiscriminatorValue("6")
-public class FlyttSluttRute extends Rute2{
+public class FlyttSluttRute extends Rute2 {
 
 	@Override
 	protected Rute2 landetPaa() {
-		//TODO
-		return null;
+		Flytt f = super.getStartFlytt();
+		if (super.getStartFlytt() == null) {
+			return this;
+		}
+		Rute2 res = this;
+		while(f!=null) {
+			res = f.getSlutt();
+			f = res.getStartFlytt();
+		}
+		return res;
 	}
 }

@@ -36,7 +36,7 @@ public abstract class Rute2 extends Rute {
 	private DType2 type;
 
 	@OneToOne(mappedBy = "start")
-	private List<Flytt> startFlytt;
+	private Flytt startFlytt;
 
 	@OneToMany(mappedBy = "slutt")
 	private List<Flytt> flytt;
@@ -57,6 +57,14 @@ public abstract class Rute2 extends Rute {
 	public DType2 getType() {
 		super.setType(type);
 		return type;
+	}
+
+	public Flytt getStartFlytt() {
+		return startFlytt;
+	}
+
+	public List<Flytt> getSluttFlytt() {
+		return flytt;
 	}
 
 	protected abstract Rute2 landetPaa();
