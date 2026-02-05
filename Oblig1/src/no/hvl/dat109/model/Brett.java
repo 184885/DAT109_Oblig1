@@ -62,5 +62,6 @@ public class Brett {
  */
 	public Rute finnRute(int id) {
 		return ruter.stream().filter(r->r.getId()==id).findAny().orElse(null);
+
 	}
 }
