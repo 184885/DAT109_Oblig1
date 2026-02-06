@@ -14,19 +14,22 @@ import no.hvl.dat109.model.DType;
 import no.hvl.dat109.model.Rute;
 
 /**
+ * Simulering av rute sett fra databasen.
+ * 
+ * @version v.1.0
  * @author June Volden
  */
-@Entity(name="rute")
+@Entity(name = "rute")
 @Table(schema = "dat109_o1")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "rute_type", discriminatorType = DiscriminatorType.INTEGER)
-public abstract class Rute_v1 extends Rute{
+public abstract class Rute_v1 extends Rute {
 	@Id
 	private int ruteID;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "brettID")
-	  private Brett_v1 brett;
+	private Brett_v1 brett;
 
 	@ManyToOne
 	@JoinColumn(name = "rute_type")
@@ -41,15 +44,12 @@ public abstract class Rute_v1 extends Rute{
 	@Override
 	public Brett getBrett() {
 		super.setBrett(brett);
-		return (Brett)brett;
+		return (Brett) brett;
 	}
 
 	@Override
 	public DType getType() {
 		super.setType(type);
-		return (DType)type;
+		return (DType) type;
 	}
-
-	protected abstract Rute_v1 landetPaa();
-
 }

@@ -13,7 +13,7 @@ public class Kopp {
 		this.terning = new Terning();
 		this.sum = 0;
 	}
-	
+
 	public Kopp(Terning terning) {
 		this.terning = terning;
 		this.sum = 0;
@@ -22,7 +22,7 @@ public class Kopp {
 	public int getSum() {
 		return sum;
 	}
-	
+
 	/**
 	 * Triller terning eit gitt antall gonger. Havner terningen på 6 trilles den
 	 * igjen og neste verdi legges til summen. Repeteres etter nødvendighet eller

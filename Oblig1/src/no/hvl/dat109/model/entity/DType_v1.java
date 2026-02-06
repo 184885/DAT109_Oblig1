@@ -7,22 +7,23 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import no.hvl.dat109.model.DType;
+
 /**
- * Forhold i databasen
+ * Enum forhold i databasen Beskriver type med navn.
  * 
+ * @version v.1.0
  * @author June Volden
  */
 
-@Entity(name="dtype")
+@Entity(name = "dtype")
 @Table(schema = "dat109_o1")
-public class DType_v1 extends DType{
+public class DType_v1 extends DType {
 	@Id
 	private Integer id;
+	@SuppressWarnings("unused")
 	private String navn;
-	
-	@OneToMany(mappedBy="type")
+
+	@OneToMany(mappedBy = "type")
 	private List<Rute_v1> ruter;
-	
-	
-	
+
 }

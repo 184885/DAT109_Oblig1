@@ -5,6 +5,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 /**
+ * Utvida rutetype flytt sluttrute. Kan vere slutt på slange eller stige
+ *
+ * @version v.2.0
  * @author June Volden
  */
 @Entity

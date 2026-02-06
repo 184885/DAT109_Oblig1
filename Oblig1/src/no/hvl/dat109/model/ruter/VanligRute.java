@@ -5,6 +5,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import no.hvl.dat109.model.entity.Rute_v1;
 /**
+ * Utvida rutetype vanlig rute
+ *
+ * @version v.1.0
  * @author June Volden
  */
 @Entity

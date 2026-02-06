@@ -12,13 +12,14 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 /**
- * Samling for slanger og stiger
+ * Samling for slanger og stiger for databasen
+ * @version v.2.0
  * @author June Volden
  */
 @Entity
 @Table(schema = "dat109_o1_v2")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "flytt_type", discriminatorType = DiscriminatorType.STRING)
+@DiscriminatorColumn(name = "flytt_type", discriminatorType = DiscriminatorType.INTEGER)
 public abstract class Flytt {
 	@ManyToOne
 	@JoinColumn(name="flytt_type", insertable=false, updatable=false)

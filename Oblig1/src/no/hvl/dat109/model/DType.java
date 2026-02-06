@@ -3,8 +3,9 @@ package no.hvl.dat109.model;
 import java.util.List;
 
 import jakarta.persistence.MappedSuperclass;
+
 /**
- * Forhold i databasen
+ * Utrykker enum i databasen
  * 
  * @author June Volden
  */
@@ -14,7 +15,6 @@ public class DType {
 
 	private Integer id;
 	private String navn;
-	
 
 	private List<Rute> ruter;
 
@@ -29,7 +29,5 @@ public class DType {
 	public List<Rute> getRuter() {
 		return ruter;
 	}
-	
-	
-	
+
 }

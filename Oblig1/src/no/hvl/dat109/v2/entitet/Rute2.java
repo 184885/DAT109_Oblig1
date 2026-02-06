@@ -17,6 +17,9 @@ import no.hvl.dat109.model.Brett;
 import no.hvl.dat109.model.Rute;
 
 /**
+ * Simulering av rute fra databasen
+ * 
+ * @version v.2.0
  * @author June Volden
  */
 @Entity(name = "rute")

@@ -3,23 +3,28 @@ package no.hvl.dat109.v2.entitet;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+
 /**
+ * Utvida rutetype flytt startrute. Kan vere start på slange eller stige
+ *
+ * @version v.2.0
  * @author June Volden
  */
 @Entity
 @Table(schema = "dat109_o1_v2")
 @DiscriminatorValue("5")
-public class FlyttStartRute extends Rute2{
+public class FlyttStartRute extends Rute2 {
 
 	@Override
 	protected Rute2 landetPaa() {
 		Flytt f = super.getStartFlytt();
 		Rute2 res = this;
-		while(f!=null) {
+		while (f != null) {
 			res = f.getSlutt();
 			f = res.getStartFlytt();
 		}
 		return res;
+
 	}
 
 }

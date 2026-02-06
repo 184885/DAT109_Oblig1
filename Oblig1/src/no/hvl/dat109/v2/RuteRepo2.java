@@ -12,8 +12,9 @@ import no.hvl.dat109.v2.entitet.Brett2;
 import no.hvl.dat109.v2.entitet.Rute2;
 
 /**
- * Klasse for å kontakte database Rute er T Integer er id
- *
+ * Klasse for å kontakte database 
+ * 
+ *@version v.2.0
  * @author June Volden
  */
 

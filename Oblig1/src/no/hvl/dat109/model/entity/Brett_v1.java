@@ -11,11 +11,11 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import no.hvl.dat109.model.Brett;
 import no.hvl.dat109.model.Rute;
-import no.hvl.dat109.service.Remake;
 
 /**
- * Simulerer eit brett i stigespillet
+ * Simulering av brett sett fra databasen.
  * 
+ * @version v.1.0
  * @author June Volden
  */
 @Entity(name = "brett")
@@ -38,9 +38,9 @@ public class Brett_v1 extends Brett {
 	}
 
 	@Override
-	public List<Rute> getRuter() {
-		super.setRuter(Remake.makeRute(ruter));
-		return super.getRuter();
+	public List<? extends Rute> getRuter() {
+		super.setRuter(ruter);
+		return ruter;
 	}
 
 	/**

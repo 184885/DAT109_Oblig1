@@ -9,7 +9,7 @@ public class Brikke {
 	private String navn;
 	private Rute rute;
 
-	//Konstruktør
+	// Konstruktør
 	public Brikke() {
 		this.navn = "Brikke";
 	}
@@ -18,9 +18,11 @@ public class Brikke {
 	public String getNavn() {
 		return navn;
 	}
+
 	public Rute getRute() {
 		return rute;
 	}
+
 	public void setRute(Rute rute) {
 		this.rute = rute;
 	}
@@ -31,6 +33,5 @@ public class Brikke {
 	public void flyttFengsel(Rute r) {
 		setRute(r);
 	}
-
 
 }

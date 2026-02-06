@@ -9,11 +9,11 @@ import no.hvl.dat109.model.Brett;
 import no.hvl.dat109.model.Rute;
 import no.hvl.dat109.model.entity.Brett_v1;
 import no.hvl.dat109.model.entity.Rute_v1;
-import no.hvl.dat109.service.Remake;
 
 /**
- * Klasse for å kontakte database Rute er T Integer er id
- *
+ * Klasse for å kontakte database
+ * 
+ * @version v.1.0
  * @author June Volden
  */
 
@@ -30,14 +30,14 @@ public class RuteRepo implements CrudRepository {
 	}
 
 	@Override
-	public List<Rute> findAll() {
+	public List<Rute_v1> findAll() {
 		EntityManager em = emf.createEntityManager();
 		String jpqlQuery = "select r from Rute r";
 
 		try {
-			
-			List<Rute_v1> liste =  em.createQuery(jpqlQuery, Rute_v1.class).getResultList();
-			return Remake.makeRute(liste);
+
+			return em.createQuery(jpqlQuery, Rute_v1.class).getResultList();
+
 		} finally {
 			em.close();
 		}
@@ -54,6 +54,12 @@ public class RuteRepo implements CrudRepository {
 		}
 	}
 
+	/**
+	 * Henter brettet fra databasen
+	 * 
+	 * @param brett id
+	 * @return brett fra databasen
+	 */
 	public Brett findBrett(int id) {
 		EntityManager em = emf.createEntityManager();
 
@@ -62,5 +68,12 @@ public class RuteRepo implements CrudRepository {
 		} finally {
 			em.close();
 		}
+	}
+
+	/**
+	 * Lukker EntityManagerFactory-et
+	 */
+	public void close() {
+		emf.close();
 	}
 }

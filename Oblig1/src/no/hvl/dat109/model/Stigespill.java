@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Simulerer eit stigespill
+ * 
  * @author June Volden
  * @author Brage Brekkeflat
  * @author Leah Hagen Monsen
-
  */
 public class Stigespill {
 	// Objektvariabler
@@ -24,10 +25,11 @@ public class Stigespill {
 	 */
 	public Stigespill() {
 		this(MAX_ANTALL);
-		}
+	}
+
 	/**
-	 * Oppretter eit spill med eit gitt antall spillere 
-	 * og eit tomt brett
+	 * Oppretter eit spill med eit gitt antall spillere og eit tomt brett
+	 * 
 	 * @param antallSpillere er ønska antall spillere
 	 */
 	public Stigespill(int antallSpillere) {
@@ -36,72 +38,77 @@ public class Stigespill {
 		int antall = Math.max(MIN_ANTALL, Math.min(antallSpillere, MAX_ANTALL));
 		this.spillere = new ArrayList<>(antall);
 		for (int i = 0; i < antall; i++) {
-			Spiller s =new Spiller(i+1);
+			Spiller s = new Spiller(i + 1);
 			spillere.add(s);
 			this.brett.getBrikker().add(s.getBrikke());
 		}
 		vunnet = false;
 	}
+
 	/**
-	 * OBS! Bruk denne!
-	 * Oppretter eit spill med MAX_ANTALL spillere og gitt brett.
+	 * OBS! Bruk denne! Oppretter eit spill med MAX_ANTALL spillere og gitt brett.
+	 * 
 	 * @param brett, liste med ønska ruter
 	 */
 	public Stigespill(Brett brett) {
 		this();
-		this.brett = new SpillBrett(brett.getRuter(),this.brett.getBrikker());
-		}
-	
+		this.brett = new SpillBrett(brett.getRuter(), this.brett.getBrikker());
+	}
+
 	/**
 	 * Starter eit spill stigespill
 	 */
 	public void spill() {
-		//Setter alle spillerbrikker på start
+		// Setter alle spillerbrikker på start
 		Rute start = brett.finnRute(1);
-		for(Spiller spiller:spillere) {
+		for (Spiller spiller : spillere) {
 			spiller.getBrikke().setRute(start);
 		}
-		
-		while(!vunnet) {
+
+		while (!vunnet) {
 			spillRunde();
 		}
 	}
-	
+
 	/**
 	 * Spiller ein runde av stigespillet
 	 */
 	private void spillRunde() {
-		for(Spiller spiller:spillere) {
+		for (Spiller spiller : spillere) {
 			System.out.println(spiller.spillTrekk(kopp, brett));
 			spillVunnet(spiller);
 		}
 	}
+
 	/**
 	 * Sjekker om ein spiller har vunnet spillet
 	 */
 	private void spillVunnet(Spiller s) {
-		if(!vunnet) {
-			//TODO privat rute maal?
-			Rute maal  = brett.finnRute(100);
+		if (!vunnet) {
+			// TODO privat rute maal?
+			Rute maal = brett.finnRute(100);
 			vunnet = maal.equals(s.getBrikke().getRute());
 		}
 	}
-	
+
 	/**
 	 * Getters av verdier.
 	 */
-	
+
 	public Kopp getKopp() {
 		return kopp;
 	}
+
 	public List<Spiller> getSpillere() {
 		return spillere;
 	}
+
 	public Brett getBrett() {
 		return brett;
 	}
+
 	public boolean isVunnet() {
 		return vunnet;
 	}
-	
+
 }

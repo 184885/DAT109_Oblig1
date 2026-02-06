@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @version v.2.1 
- * Spillbrett til bruk i applikasjonen
+ * Spillbrett til bruk i applikasjonen, inneholder informasjon om start og mål
+ * rute.
+ * 
+ * @version v.2.0
  * @author June Volden
  */
 public class SpillBrett extends Brett {
@@ -16,9 +18,10 @@ public class SpillBrett extends Brett {
 	private static final int maalid = 1;
 
 	public SpillBrett() {
-		this(new ArrayList<Rute>(),new ArrayList<Brikke>());
+		this(new ArrayList<Rute>(), new ArrayList<Brikke>());
 	}
-	public SpillBrett(List<Rute> ruter, List<Brikke> brikker) {
+
+	public SpillBrett(List<? extends Rute> ruter, List<Brikke> brikker) {
 		super(ruter);
 		this.brikker = brikker;
 		this.setRuter(ruter);
@@ -34,10 +37,11 @@ public class SpillBrett extends Brett {
 	public Rute getMaal() {
 		return maal;
 	}
-	
+
 	public List<Brikke> getBrikker() {
 		return brikker;
 	}
+
 	public void setBrikker(List<Brikke> brikker) {
 		this.brikker = brikker;
 	}

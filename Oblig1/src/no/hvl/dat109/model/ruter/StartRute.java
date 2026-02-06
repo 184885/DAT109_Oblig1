@@ -6,6 +6,9 @@ import jakarta.persistence.Table;
 import no.hvl.dat109.model.entity.Rute_v1;
 
 /**
+ * Utvida rutetype startrute
+ *
+ * @version v.1.0
  * @author June Volden
  */
 @Entity

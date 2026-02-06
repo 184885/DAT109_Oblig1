@@ -9,14 +9,15 @@ import no.hvl.dat109.model.Stigespill;
 import no.hvl.dat109.repo.RuteRepo;
 
 /**
- * Service for å kommunisere med spillet
+ * Service for å kommunisere med spillet. Kan kombineres med Service2
+ * 
+ * @version v.1.0
  * @author June Volden
  */
 
 public class SpillService {
 	private EntityManagerFactory emf;
 	private RuteRepo ruteRepo;
-
 
 	private Stigespill spill;
 
@@ -44,6 +45,9 @@ public class SpillService {
 		spill.spill();
 	}
 
+	/**
+	 * Lukker EntityManagerFactory-et
+	 */
 	public void close() {
 		emf.close();
 	}
