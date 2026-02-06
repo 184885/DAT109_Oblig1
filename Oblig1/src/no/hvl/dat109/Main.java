@@ -11,10 +11,12 @@ public class Main {
 	private static SpillService service = new SpillService();
 	public static void main(String[] args) {
 
+		try{
 		service.init();
-		service.close();
 		service.spill();
-		
+		}finally {
+			service.close();	
+		}
 	}
 	
 }

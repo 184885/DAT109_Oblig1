@@ -3,7 +3,6 @@ package no.hvl.dat109.v2.entitet;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import no.hvl.dat109.model.Rute;
 
 /**
  * @author June Volden
@@ -20,7 +19,7 @@ public class FlyttSluttRute extends Rute2 {
 			return this;
 		}
 		Rute2 res = this;
-		while(f!=null) {
+		while (f != null) {
 			res = f.getSlutt();
 			f = res.getStartFlytt();
 		}

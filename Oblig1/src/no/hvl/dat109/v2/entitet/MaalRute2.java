@@ -14,8 +14,7 @@ public class MaalRute2 extends Rute2{
 
 	@Override
 	protected Rute2 landetPaa() {
-		//TODO
-		return null;
+		return this;
 	}
 
 }
