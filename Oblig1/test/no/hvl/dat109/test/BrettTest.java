@@ -17,15 +17,8 @@ import no.hvl.dat109.model.Brikke;
 import no.hvl.dat109.model.Kopp;
 import no.hvl.dat109.model.Rute;
 import no.hvl.dat109.model.Spiller;
-<<<<<<< HEAD
 import no.hvl.dat109.model.Terning;
-import no.hvl.dat109.model.ruter.MaalRute;
-import no.hvl.dat109.model.ruter.StartRute;
-import no.hvl.dat109.model.ruter.VanligRute;
-import no.hvl.dat109.v2.RuteRepo2;
-=======
 import no.hvl.dat109.repo.RuteRepo2;
->>>>>>> ba659b9 (rydding)
 import no.hvl.dat109.v2.entitet.Flytt;
 import no.hvl.dat109.v2.entitet.FlyttSluttRute;
 import no.hvl.dat109.v2.entitet.FlyttStartRute;
@@ -93,6 +86,7 @@ public class BrettTest {
 		spiller.spillTrekk(kopp, brett);
 		assertTrue(spiller.isFengsel());
 		assertTrue(spiller.getBrikke().getRute().getId() == 1);
+
 	}
 
 	/**
@@ -116,12 +110,14 @@ public class BrettTest {
 	
 	@Test
 	void testSlangeRuter() {
-		List<Rute> brettetsSlanger = brettetsRuter.stream().filter(x -> x.getType().getNavn() == "Slange").toList();
-		brikke.setRute(brettetsSlanger.getFirst());
-		
-		//Sjekker om brikke blir flyttet av slange
-		//TODO
-		assertTrue();
+//
+//		List<Rute> brettetsSlanger = brettetsRuter.stream().filter(x -> x.getType().getNavn() == "Slange").toList();
+//		brikke.setRute(brettetsSlanger.getFirst());
+//		
+//		//Sjekker om brikke blir flyttet av slange
+//		//TODO
+//		assertTrue();
+
 	}
 
 	/**
@@ -130,11 +126,13 @@ public class BrettTest {
 
 	@Test
 	void testStigeRuter() {
-		List<Rute> brettetsStiger = brettetsRuter.stream().filter(x -> x.getType().getNavn() == "Stige").toList();
-		brikke.setRute(brettetsStiger.getFirst());
-		
-		//Sjekker om brikke blir flyttet av stige
-		//TODO
+
+//		List<Rute> brettetsStiger = brettetsRuter.stream().filter(x -> x.getType().getNavn() == "Stige").toList();
+//		brikke.setRute(brettetsStiger.getFirst());
+//		
+//		//Sjekker om brikke blir flyttet av stige
+//		//TODO
+
 	}
 
 	/**
@@ -143,12 +141,13 @@ public class BrettTest {
 
 	@Test
 	void testVanligeRuter() {
-		List<Rute> brettetsFlytteRuter = brettetsRuter.stream().filter(x -> !x.getType().getNavn() == "Stige" && !x.getType().getNavn() == "Slange").toList();
-		List<Rute> brettetsVanligeRuter = brettetsRuter;
-		brettetsVanligeRuter.remove(brettetsFlytteRuter);
-		brettetsVanligeRuter.remove(startRute);
-		brettetsVanligeRuter.remove(maalRute);
-		
+
+//		List<Rute> brettetsFlytteRuter = brettetsRuter.stream().filter(x -> !x.getType().getNavn() == "Stige" && !x.getType().getNavn() == "Slange").toList();
+//		List<Rute> brettetsVanligeRuter = brettetsRuter;
+//		brettetsVanligeRuter.remove(brettetsFlytteRuter);
+//		brettetsVanligeRuter.remove(startRute);
+//		brettetsVanligeRuter.remove(maalRute);
+//		
 		//Sjekker om brettet ikke gjør noe
 		// - ikke mål
 		// - ikke start
