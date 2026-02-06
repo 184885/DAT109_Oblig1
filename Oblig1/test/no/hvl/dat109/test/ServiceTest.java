@@ -2,6 +2,7 @@ package no.hvl.dat109.test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+
 import java.util.List;
 
 import org.junit.Before;
@@ -42,12 +43,15 @@ public class ServiceTest {
 		
 		//Ser om det er 4 brikker
 
+
 		assertTrue(service.getSpill().getBrett().getBrikker().size() == 4);
 		
 		//Ser om alle brikker er på startruten
 		List<Brikke> brikkene = service.getSpill().getBrett().getBrikker();
 		assertTrue(brikkene.stream().allMatch(x -> x.getRute().getId() == 1));
 		service.close();
+
+
 
 	}
 }

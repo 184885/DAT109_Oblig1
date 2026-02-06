@@ -55,6 +55,7 @@ public class BrettTest {
 	Flytt stige = new Stige();
 	Flytt slange = new Slange();
 
+
 	Terning alltidSeks = new Terning() {
 		public void trill() {}
 		public int getVerdi() {return 6;}
@@ -66,7 +67,6 @@ public class BrettTest {
 	public void initMocks() {
 		MockitoAnnotations.initMocks(this);
 	}
-	
 
 	/**
 	 * Tester om startruten på brettet er riktig representert.
@@ -81,11 +81,15 @@ public class BrettTest {
 		//Ser om spiller starter og lander på rute 1 om iFengsel=true
 		spiller.flyttBrikke(brettetsStartRute.getId(), 0);
 		assertTrue(spiller.getBrikke().getRute().getId() == 1);
+
 		assertFalse(spiller.isFengsel());
 		
 		spiller.spillTrekk(kopp, brett);
 		assertTrue(spiller.isFengsel());
 		assertTrue(spiller.getBrikke().getRute().getId() == 1);
+
+
+		
 
 	}
 
@@ -110,6 +114,7 @@ public class BrettTest {
 	
 	@Test
 	void testSlangeRuter() {
+
 //
 //		List<Rute> brettetsSlanger = brettetsRuter.stream().filter(x -> x.getType().getNavn() == "Slange").toList();
 //		brikke.setRute(brettetsSlanger.getFirst());
@@ -117,6 +122,8 @@ public class BrettTest {
 //		//Sjekker om brikke blir flyttet av slange
 //		//TODO
 //		assertTrue();
+
+
 
 	}
 
@@ -142,6 +149,7 @@ public class BrettTest {
 	@Test
 	void testVanligeRuter() {
 
+
 //		List<Rute> brettetsFlytteRuter = brettetsRuter.stream().filter(x -> !x.getType().getNavn() == "Stige" && !x.getType().getNavn() == "Slange").toList();
 //		List<Rute> brettetsVanligeRuter = brettetsRuter;
 //		brettetsVanligeRuter.remove(brettetsFlytteRuter);
@@ -154,6 +162,7 @@ public class BrettTest {
 		// - ikke slange/stige
 		
 		//TODO
+
 
 	}
 
