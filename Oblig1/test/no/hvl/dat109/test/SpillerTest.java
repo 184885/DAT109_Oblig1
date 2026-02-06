@@ -2,13 +2,14 @@ package no.hvl.dat109.test;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.mockito.Mockito.doReturn;
 
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import jakarta.persistence.EntityManagerFactory;
 import no.hvl.dat109.model.Brett;
@@ -16,7 +17,6 @@ import no.hvl.dat109.model.Kopp;
 import no.hvl.dat109.model.Rute;
 import no.hvl.dat109.model.Spiller;
 import no.hvl.dat109.model.Terning;
-import no.hvl.dat109.model.ruter.VanligRute;
 import no.hvl.dat109.v2.RuteRepo2;
 
 /**
@@ -32,7 +32,7 @@ public class SpillerTest {
 	Kopp kopp = new Kopp();
 	//TODO - rutene må mockes fordi de har ingen andre måter å generere id
 	@Mock private EntityManagerFactory emf;
-	@Mock @InjectMocks private RuteRepo2 ruterepo = new RuteRepo2(emf);
+	@Mock(name="database") RuteRepo2 ruterepo = new RuteRepo2(emf);
 	List<Rute> ruter = ruterepo.findAll();
 	Brett brett = new Brett(ruter);
 	
@@ -50,7 +50,10 @@ public class SpillerTest {
 	
 	Kopp koppAlltidEn = new Kopp(terningAlltidEn);
 	
-	
+	@Before
+	public void initMocks() {
+		MockitoAnnotations.initMocks(this);
+	}
 	
 	/*
 	 * Test på spilltrekk. Kopp triller og brikke flytter.
