@@ -14,8 +14,6 @@ public abstract class Rute {
 
 	private Brett brett;
 
-	private DType type;
-
 	public int getId() {
 		return ruteID;
 	}
@@ -24,20 +22,12 @@ public abstract class Rute {
 		return brett;
 	}
 
-	public DType getType() {
-		return type;
-	}
-
 	public void setId(int ruteID) {
 		this.ruteID = ruteID;
 	}
 
 	public void setBrett(Brett brett) {
 		this.brett = brett;
-	}
-
-	public void setType(DType type) {
-		this.type = type;
 	}
 
 	/**

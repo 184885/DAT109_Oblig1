@@ -16,8 +16,8 @@ import no.hvl.dat109.model.Kopp;
 import no.hvl.dat109.model.Rute;
 import no.hvl.dat109.model.Spiller;
 import no.hvl.dat109.model.Terning;
-import no.hvl.dat109.model.ruter.VanligRute;
-import no.hvl.dat109.v2.RuteRepo2;
+import no.hvl.dat109.model.entity.VanligRute;
+import no.hvl.dat109.repo.RuteRepo2;
 
 /**
  * Tester spillerene.

@@ -1,4 +1,4 @@
-package no.hvl.dat109.v2;
+package no.hvl.dat109.repo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,6 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.TypedQuery;
 import no.hvl.dat109.model.Rute;
-import no.hvl.dat109.repo.CrudRepository;
 import no.hvl.dat109.v2.entitet.Brett2;
 import no.hvl.dat109.v2.entitet.Rute2;
 

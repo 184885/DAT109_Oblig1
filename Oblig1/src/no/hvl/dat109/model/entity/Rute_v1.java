@@ -10,7 +10,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import no.hvl.dat109.model.Brett;
-import no.hvl.dat109.model.DType;
 import no.hvl.dat109.model.Rute;
 
 /**
@@ -47,9 +46,7 @@ public abstract class Rute_v1 extends Rute {
 		return (Brett) brett;
 	}
 
-	@Override
-	public DType getType() {
-		super.setType(type);
-		return (DType) type;
+	public DType_v1 getType() {
+		return type;
 	}
 }

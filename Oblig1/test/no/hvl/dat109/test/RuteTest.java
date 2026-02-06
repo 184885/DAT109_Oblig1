@@ -3,7 +3,6 @@ package no.hvl.dat109.test;
 import org.junit.jupiter.api.Test;
 
 import no.hvl.dat109.model.Rute;
-import no.hvl.dat109.model.ruter.StartRute;
 import no.hvl.dat109.v2.entitet.FlyttStartRute;
 import no.hvl.dat109.v2.entitet.MaalRute2;
 import no.hvl.dat109.v2.entitet.StartRute2;

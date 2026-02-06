@@ -1,10 +1,13 @@
 package no.hvl.dat109.test;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import no.hvl.dat109.model.Stigespill;
-import no.hvl.dat109.v2.ServiceV2;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+
 import no.hvl.dat109.model.SpillBrett;
+import no.hvl.dat109.model.Stigespill;
+import no.hvl.dat109.service.ServiceV2;
 
 /**
  * Tester service.
@@ -29,9 +32,9 @@ public class ServiceTest {
 		service.init();
 		
 		//Ser om det er 4 brikker
-		assertTrue(service.getSpill().getBrikker().size() == 4);
+		assertTrue(service.getSpill().getBrett().getBrikker().size() == 4);
 		
 		//Ser om alle brikker er på startruten
-		assertTrue(service.getSpill().getBrikker());
+		service.getSpill().getBrett().getBrikker().forEach(b->assertTrue(b.getRute().getId()==1));
 	}
 }

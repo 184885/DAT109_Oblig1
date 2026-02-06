@@ -103,7 +103,7 @@ public class Stigespill {
 		return spillere;
 	}
 
-	public Brett getBrett() {
+	public SpillBrett getBrett() {
 		return brett;
 	}
 
