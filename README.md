@@ -11,32 +11,24 @@ Programmet kjøres frå Main.java
 Tester legges under `test` source-mappa.
 
 ## Ikkje implementert enno:
-- landetpaa  
-	_metoden trengs ikkje før slanger/stiger er implementert_
-- SpillBrett  
-	_kan brukes om me vil flytte brikker gjennom spillbrettet.
-	Må isåfall ha ny Stigespill konstruktør for denne implementasjonen._
+- Definer ein fyrste runde som starter spillet. 
+Kvar påfølgende runde sjekkes det kva rute ein spiller står på og er dette startruta, 
+flyttes spilleren kun om den har trillet ein verdi som er 6 (eller høgare). 
+Står spilleren ikkje på startruta fortsetter spillet sin vanlige gang.
+  
+- Brettet flytter brikken og ikkje spilleren. 
+Dette gjør at plasseringen til brikkene kan lagres i ein database.
+Brettet har også informasjon om kor start, mål, slanger og stiger er 
+og kan derfor lett gjøre spørringer mot desse.
 
 ## Ting som må fikses:
 ### TEKST:
-* Tekst når spiller vinner.
 * Tekst for kva spiller triller  
 _(kan gjøres ved ein funksjon som tar inn sum før denne endres og rekonstruerer kvart trill fyrst `sum/6` (antall ganger trillet seks) så `sum%6` for siste trill)_
 
 > _Spesialtekst viss fengsel_
-> * havnet i fengsel
-> * står i fengsel
 > * trillet ut av fengsel
 
-### KODE:
-* Legge til Access på MappedSuperClass
-	* DType
-	* Brett
-	* Rute
-* Legge til tilhøyrande Access på entitetane
-´´´
-@Access(AccessType.FIELD)
-´´´
 ### TEST:
 * Brett må testes
 	- gyldigRute
