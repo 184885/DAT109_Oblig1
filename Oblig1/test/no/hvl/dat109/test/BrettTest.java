@@ -13,14 +13,18 @@ import jakarta.persistence.EntityManagerFactory;
 import no.hvl.dat109.model.Brett;
 import no.hvl.dat109.model.Brikke;
 import no.hvl.dat109.model.Rute;
+import no.hvl.dat109.model.Spiller;
 import no.hvl.dat109.model.ruter.MaalRute;
 import no.hvl.dat109.model.ruter.StartRute;
 import no.hvl.dat109.model.ruter.VanligRute;
 import no.hvl.dat109.v2.RuteRepo2;
+import no.hvl.dat109.v2.entitet.Flytt;
 import no.hvl.dat109.v2.entitet.FlyttSluttRute;
 import no.hvl.dat109.v2.entitet.FlyttStartRute;
 import no.hvl.dat109.v2.entitet.MaalRute2;
+import no.hvl.dat109.v2.entitet.Slange;
 import no.hvl.dat109.v2.entitet.StartRute2;
+import no.hvl.dat109.v2.entitet.Stige;
 import no.hvl.dat109.v2.entitet.VanligRute2;
 
 /**
@@ -36,11 +40,14 @@ public class BrettTest {
 	List<Rute> brettetsRuter = ruterepo.findAll();
 	Brett brett = new Brett(brettetsRuter);
 	Brikke brikke = new Brikke();
+	Spiller spiller = new Spiller();
 	Rute startRute = new StartRute2();
 	Rute maalRute = new MaalRute2();
 	Rute vanligRute = new VanligRute2();
 	Rute flyttStartRute = new FlyttStartRute();
 	Rute flyttSluttRute = new FlyttSluttRute();
+	Flytt stige = new Stige();
+	Flytt slange = new Slange();
 	
 	/**
 	 * Tester om startruten på brettet er riktig representert.
@@ -53,6 +60,11 @@ public class BrettTest {
 		//Startrute på brettet
 		Rute brettetsStartRute = brett.getRuter().getFirst();
 		assertTrue(brettetsStartRute.equals(startRute) && brettetsStartRute.getId() == 1);
+		
+		//Ser om spiller starter og lander på rute 1 om iFengsel=true
+		spiller.flyttBrikke(brettetsStartRute.getId(), 0);
+		assertTrue(spiller.getBrikke().getRute().getId() == 1);
+		spiller
 	}
 	
 	/**
@@ -64,6 +76,10 @@ public class BrettTest {
 		//Målrute på brettet
 		Rute brettetsMaalRute = brett.getRuter().getLast();
 		assertTrue(brettetsMaalRute.equals(maalRute) && brettetsMaalRute.getId() == 100);
+		
+		//Når en spiller lander på mål, vinner spiller.
+		spiller.flyttBrikke(brettetsMaalRute.getId(), 0);
+		assertTrue(spiller.spillVunnet());
 	}
 	
 	/**
@@ -72,7 +88,8 @@ public class BrettTest {
 	
 	@Test
 	void testSlangeRuter() {
-		List<Rute> brettetsSlanger = brettetsRuter.stream().filter(x -> x.isSlange()).toList();
+		List<Rute> brettetsSlanger = brettetsRuter.stream().filter(x -> x.getType().getNavn() == "Slange").toList();
+		assertTrue(brikke.setRute(brettetsSlanger.getFirst().));
 	}
 	
 	/**

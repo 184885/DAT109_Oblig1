@@ -43,6 +43,13 @@ public class SpillerTest {
 	
 	Kopp koppAlltidSeks = new Kopp(terningAlltidSeks);
 	
+	Terning terningAlltidEn = new Terning() {
+		public void trill() {}
+		public int getVerdi() {return 1;}
+	};
+	
+	Kopp koppAlltidEn = new Kopp(terningAlltidEn);
+	
 	
 	
 	/*
@@ -80,6 +87,10 @@ public class SpillerTest {
 		//Spiller skjekker fengsel metode.
 		//iFengsel = true
 		assertTrue(spiller.isFengsel());
-		assertTrue(spiller.getBrikke().getRute() == null);
+		assertTrue(spiller.getBrikke().getRute().getId() == 1);
+		
+		//Gjør et trekk og ser om spiller er fortsatt i fengsel.
+		spiller.spillTrekk(koppAlltidEn, brett);
+		assertTrue(spiller.getBrikke().getRute().getId() == 1);
 	}
 }
