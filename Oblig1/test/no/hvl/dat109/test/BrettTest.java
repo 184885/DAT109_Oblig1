@@ -17,11 +17,15 @@ import no.hvl.dat109.model.Brikke;
 import no.hvl.dat109.model.Kopp;
 import no.hvl.dat109.model.Rute;
 import no.hvl.dat109.model.Spiller;
+<<<<<<< HEAD
 import no.hvl.dat109.model.Terning;
 import no.hvl.dat109.model.ruter.MaalRute;
 import no.hvl.dat109.model.ruter.StartRute;
 import no.hvl.dat109.model.ruter.VanligRute;
 import no.hvl.dat109.v2.RuteRepo2;
+=======
+import no.hvl.dat109.repo.RuteRepo2;
+>>>>>>> ba659b9 (rydding)
 import no.hvl.dat109.v2.entitet.Flytt;
 import no.hvl.dat109.v2.entitet.FlyttSluttRute;
 import no.hvl.dat109.v2.entitet.FlyttStartRute;
@@ -39,8 +43,11 @@ import no.hvl.dat109.v2.entitet.VanligRute2;
 
 public class BrettTest {
 
-	@Mock EntityManagerFactory emf;
-	@Mock @InjectMocks RuteRepo2 ruterepo = new RuteRepo2(emf);
+	@Mock
+	EntityManagerFactory emf;
+	@Mock
+	@InjectMocks
+	RuteRepo2 ruterepo = new RuteRepo2(emf);
 	List<Rute> brettetsRuter = ruterepo.findAll();
 	
 	Brett brett = new Brett(brettetsRuter);
@@ -54,7 +61,7 @@ public class BrettTest {
 	Rute flyttSluttRute = new FlyttSluttRute();
 	Flytt stige = new Stige();
 	Flytt slange = new Slange();
-	
+
 	Terning alltidSeks = new Terning() {
 		public void trill() {}
 		public int getVerdi() {return 6;}
@@ -67,6 +74,7 @@ public class BrettTest {
 		MockitoAnnotations.initMocks(this);
 	}
 	
+
 	/**
 	 * Tester om startruten på brettet er riktig representert.
 	 */
@@ -86,22 +94,22 @@ public class BrettTest {
 		assertTrue(spiller.isFengsel());
 		assertTrue(spiller.getBrikke().getRute().getId() == 1);
 	}
-	
+
 	/**
 	 * Tester om målruten på brettet er riktig representert.
 	 */
-	
+
 	@Test
 	void testMaalRute() {
-		//Målrute på brettet
+		// Målrute på brettet
 		Rute brettetsMaalRute = brett.getRuter().getLast();
 		assertTrue(brettetsMaalRute.equals(maalRute) && brettetsMaalRute.getId() == 100);
-		
-		//Når en spiller lander på mål, vinner spiller.
+
+		// Når en spiller lander på mål, vinner spiller.
 		spiller.flyttBrikke(brettetsMaalRute.getId(), 0);
 		assertTrue(spiller.spillVunnet());
 	}
-	
+
 	/**
 	 * Tester om slanger på brettet er riktig representert.
 	 */
@@ -115,11 +123,11 @@ public class BrettTest {
 		//TODO
 		assertTrue();
 	}
-	
+
 	/**
 	 * Tester om stiger på brettet er riktig representert.
 	 */
-	
+
 	@Test
 	void testStigeRuter() {
 		List<Rute> brettetsStiger = brettetsRuter.stream().filter(x -> x.getType().getNavn() == "Stige").toList();
@@ -128,11 +136,11 @@ public class BrettTest {
 		//Sjekker om brikke blir flyttet av stige
 		//TODO
 	}
-	
+
 	/**
 	 * Tester om vanlige ruter på brettet er riktig representert.
 	 */
-	
+
 	@Test
 	void testVanligeRuter() {
 		List<Rute> brettetsFlytteRuter = brettetsRuter.stream().filter(x -> !x.getType().getNavn() == "Stige" && !x.getType().getNavn() == "Slange").toList();
@@ -147,22 +155,22 @@ public class BrettTest {
 		// - ikke slange/stige
 		
 		//TODO
+
 	}
-	
-	
+
 	/**
 	 * Tester om en brikke på brettet ikke kan gå "forbi" brettet.
 	 */
-	
+
 	@Test
 	void testGyldigRute() {
-		//Starter på rute nr 90
+		// Starter på rute nr 90
 		Rute gyldigPlass = brett.finnRute(90);
-		
-		//Test - går 10 skritt etter 90 (90 + 10 = 100, gyldig)
+
+		// Test - går 10 skritt etter 90 (90 + 10 = 100, gyldig)
 		assertTrue(brett.gyldigRute(gyldigPlass, 10));
-		
-		//Test - går 11 skritt etter 90 (90 + 11 = 101, ugyldig)
+
+		// Test - går 11 skritt etter 90 (90 + 11 = 101, ugyldig)
 		assertFalse(brett.gyldigRute(gyldigPlass, 11));
 	}
 }

@@ -6,7 +6,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import no.hvl.dat109.model.DType;
 
 /**
  * Enum forhold i databasen Beskriver type med navn.
@@ -17,7 +16,7 @@ import no.hvl.dat109.model.DType;
 
 @Entity(name = "dtype")
 @Table(schema = "dat109_o1")
-public class DType_v1 extends DType {
+public class DType_v1 {
 	@Id
 	private Integer id;
 	@SuppressWarnings("unused")

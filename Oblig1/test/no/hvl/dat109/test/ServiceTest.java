@@ -8,12 +8,11 @@ import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.Spy;
 
-import no.hvl.dat109.model.Stigespill;
-import no.hvl.dat109.v2.ServiceV2;
 import no.hvl.dat109.model.Brikke;
 import no.hvl.dat109.model.SpillBrett;
+import no.hvl.dat109.model.Stigespill;
+import no.hvl.dat109.service.ServiceV2;
 
 /**
  * Tester service.
@@ -42,11 +41,13 @@ public class ServiceTest {
 		service.init();
 		
 		//Ser om det er 4 brikker
-		assertTrue(service.getSpillBrett().getBrikker().size() == 4);
+
+		assertTrue(service.getSpill().getBrett().getBrikker().size() == 4);
 		
 		//Ser om alle brikker er på startruten
-		List<Brikke> brikkene = service.getSpillBrett().getBrikker();
+		List<Brikke> brikkene = service.getSpill().getBrett().getBrikker();
 		assertTrue(brikkene.stream().allMatch(x -> x.getRute().getId() == 1));
 		service.close();
+
 	}
 }

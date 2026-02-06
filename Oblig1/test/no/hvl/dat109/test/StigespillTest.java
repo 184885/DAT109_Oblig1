@@ -1,8 +1,6 @@
 package no.hvl.dat109.test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
@@ -13,7 +11,7 @@ import no.hvl.dat109.model.Brett;
 import no.hvl.dat109.model.Rute;
 import no.hvl.dat109.model.Spiller;
 import no.hvl.dat109.model.Stigespill;
-import no.hvl.dat109.model.ruter.MaalRute;
+import no.hvl.dat109.model.entity.MaalRute;
 
 /**
  * Tester Stigepill.

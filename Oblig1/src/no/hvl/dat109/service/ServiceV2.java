@@ -1,4 +1,4 @@
-package no.hvl.dat109.v2;
+package no.hvl.dat109.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +10,7 @@ import no.hvl.dat109.Passwords;
 import no.hvl.dat109.model.Brikke;
 import no.hvl.dat109.model.SpillBrett;
 import no.hvl.dat109.model.Stigespill;
+import no.hvl.dat109.repo.RuteRepo2;
 
 /**
  * Service for å kommunisere med spillet og databasen Kan sammenslåast med
@@ -30,6 +31,14 @@ public class ServiceV2 {
 				Map.of("jakarta.persistence.jdbc.password", Passwords.AZURE_PASSWORD));
 
 		ruteRepo = new RuteRepo2(emf);
+	}
+
+	public Stigespill getSpill() {
+		return spill;
+	}
+
+	public void setSpill(Stigespill spill) {
+		this.spill = spill;
 	}
 
 	/**

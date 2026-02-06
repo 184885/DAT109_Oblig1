@@ -56,9 +56,7 @@ public abstract class Rute2 extends Rute {
 		return super.getBrett();
 	}
 
-	@Override
 	public DType2 getType() {
-		super.setType(type);
 		return type;
 	}
 
