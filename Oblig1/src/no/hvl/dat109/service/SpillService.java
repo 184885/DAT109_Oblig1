@@ -10,6 +10,7 @@ import no.hvl.dat109.repo.RuteRepo;
 
 /**
  * Service for å kommunisere med spillet
+ * @author June Volden
  */
 
 public class SpillService {

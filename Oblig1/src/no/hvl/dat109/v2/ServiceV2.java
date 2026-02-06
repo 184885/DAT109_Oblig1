@@ -9,7 +9,11 @@ import jakarta.persistence.Persistence;
 import no.hvl.dat109.Passwords;
 import no.hvl.dat109.model.Brikke;
 import no.hvl.dat109.model.Stigespill;
-
+/**
+ * Service for å kommunisere med spillet og databasen
+ * Kan sammenslåast med service.
+ * @author June Volden
+ */
 public class ServiceV2 {
 
 	private EntityManagerFactory emf;
@@ -46,7 +50,9 @@ public class ServiceV2 {
 		}
 		spill.spill();
 	}
-
+/**
+ * Lukke tilkobling til databasen
+ */
 	public void close() {
 		emf.close();
 	}
