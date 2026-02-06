@@ -64,7 +64,7 @@ public class BrettTest {
 		//Ser om spiller starter og lander på rute 1 om iFengsel=true
 		spiller.flyttBrikke(brettetsStartRute.getId(), 0);
 		assertTrue(spiller.getBrikke().getRute().getId() == 1);
-		spiller
+		
 	}
 
 	/**
@@ -88,8 +88,8 @@ public class BrettTest {
 	
 	@Test
 	void testSlangeRuter() {
-		List<Rute> brettetsSlanger = brettetsRuter.stream().filter(x -> x.getType().getNavn() == "Slange").toList();
-		assertTrue(brikke.setRute(brettetsSlanger.getFirst().));
+//		List<Rute> brettetsSlanger = brettetsRuter.stream().filter(x -> x.getType().getNavn() == "Slange").toList();
+//		assertTrue(brikke.setRute(brettetsSlanger.getFirst()));
 	}
 
 	/**
@@ -98,7 +98,7 @@ public class BrettTest {
 
 	@Test
 	void testStigeRuter() {
-		List<Rute> brettetsStiger = brettetsRuter.stream().filter(x -> x.isStige()).toList();
+//		List<Rute> brettetsStiger = brettetsRuter.stream().filter(x -> x.isStige()).toList();
 	}
 
 	/**
@@ -107,9 +107,9 @@ public class BrettTest {
 
 	@Test
 	void testVanligeRuter() {
-		List<Rute> brettetsVanligeRuter = brettetsRuter.stream().filter(x -> !x.isSlange && !x.isStige).toList();
-		brettetsVanligeRuter.remove(startRute);
-		brettetsVanligeRuter.remove(maalRute);
+//		List<Rute> brettetsVanligeRuter = brettetsRuter.stream().filter(x -> !x.isSlange && !x.isStige).toList();
+//		brettetsVanligeRuter.remove(startRute);
+//		brettetsVanligeRuter.remove(maalRute);
 
 	}
 

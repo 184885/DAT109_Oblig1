@@ -1,5 +1,6 @@
 package no.hvl.dat109.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.MappedSuperclass;
@@ -16,6 +17,7 @@ public class Brett {
 
 	// Konstruktør
 	public Brett() {
+		this.ruter = new ArrayList<>();
 	}
 
 	public Brett(List<? extends Rute> ruter) {
