@@ -3,12 +3,21 @@ package no.hvl.dat109.test;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-import org.junit.jupiter.api.Test;
+import java.util.List;
 
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+
+import jakarta.persistence.EntityManagerFactory;
 import no.hvl.dat109.model.Brett;
 import no.hvl.dat109.model.Kopp;
+import no.hvl.dat109.model.Rute;
 import no.hvl.dat109.model.Spiller;
 import no.hvl.dat109.model.Terning;
+import no.hvl.dat109.model.ruter.VanligRute;
+import no.hvl.dat109.v2.RuteRepo2;
 
 /**
  * Tester spillerene.
@@ -16,11 +25,16 @@ import no.hvl.dat109.model.Terning;
  * @author Leah Hagen Monsen
  */
 
+//@ExtendWith(MockitoExtension.class)
 public class SpillerTest {
 
 	Spiller spiller = new Spiller();
 	Kopp kopp = new Kopp();
-	Brett brett = new Brett();
+	//TODO - rutene må mockes fordi de har ingen andre måter å generere id
+	@Mock private EntityManagerFactory emf;
+	@Mock @InjectMocks private RuteRepo2 ruterepo = new RuteRepo2(emf);
+	List<Rute> ruter = ruterepo.findAll();
+	Brett brett = new Brett(ruter);
 	
 	Terning terningAlltidSeks = new Terning() {
 		public void trill() {}
@@ -28,6 +42,13 @@ public class SpillerTest {
 	};
 	
 	Kopp koppAlltidSeks = new Kopp(terningAlltidSeks);
+	
+	Terning terningAlltidEn = new Terning() {
+		public void trill() {}
+		public int getVerdi() {return 1;}
+	};
+	
+	Kopp koppAlltidEn = new Kopp(terningAlltidEn);
 	
 	
 	
@@ -38,6 +59,8 @@ public class SpillerTest {
 	@Test
 	void spillTrekkTest() {
 		//Lagrer ruten brikken var på før trekket.
+		Rute start = brett.finnRute(1);
+		spiller.getBrikke().setRute(start);		
 		int rutenFoerTrekk = spiller.getBrikke().getRute().getId();
 		spiller.spillTrekk(kopp, brett);
 		
@@ -54,6 +77,8 @@ public class SpillerTest {
 	void fengselTest() {
 		//Spiller skjekker fengsel metode.
 		//iFengsel = false
+		Rute start = brett.finnRute(1);
+		spiller.getBrikke().setRute(start);
 		assertFalse(spiller.isFengsel());
 		
 		//Spiller kaster tre seksere.
@@ -62,6 +87,10 @@ public class SpillerTest {
 		//Spiller skjekker fengsel metode.
 		//iFengsel = true
 		assertTrue(spiller.isFengsel());
-		assertTrue(spiller.getBrikke().getRute() == null);
+		assertTrue(spiller.getBrikke().getRute().getId() == 1);
+		
+		//Gjør et trekk og ser om spiller er fortsatt i fengsel.
+		spiller.spillTrekk(koppAlltidEn, brett);
+		assertTrue(spiller.getBrikke().getRute().getId() == 1);
 	}
 }
