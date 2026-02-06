@@ -5,15 +5,19 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import jakarta.persistence.EntityManagerFactory;
 import no.hvl.dat109.model.Brett;
 import no.hvl.dat109.model.Brikke;
+import no.hvl.dat109.model.Kopp;
 import no.hvl.dat109.model.Rute;
 import no.hvl.dat109.model.Spiller;
+import no.hvl.dat109.model.Terning;
 import no.hvl.dat109.model.ruter.MaalRute;
 import no.hvl.dat109.model.ruter.StartRute;
 import no.hvl.dat109.model.ruter.VanligRute;
@@ -38,9 +42,11 @@ public class BrettTest {
 	@Mock EntityManagerFactory emf;
 	@Mock @InjectMocks RuteRepo2 ruterepo = new RuteRepo2(emf);
 	List<Rute> brettetsRuter = ruterepo.findAll();
+	
 	Brett brett = new Brett(brettetsRuter);
 	Brikke brikke = new Brikke();
 	Spiller spiller = new Spiller();
+	
 	Rute startRute = new StartRute2();
 	Rute maalRute = new MaalRute2();
 	Rute vanligRute = new VanligRute2();
@@ -49,11 +55,21 @@ public class BrettTest {
 	Flytt stige = new Stige();
 	Flytt slange = new Slange();
 	
+	Terning alltidSeks = new Terning() {
+		public void trill() {}
+		public int getVerdi() {return 6;}
+	};
+	
+	Kopp kopp = new Kopp(alltidSeks);
+	
+	@Before
+	public void initMocks() {
+		MockitoAnnotations.initMocks(this);
+	}
+	
 	/**
 	 * Tester om startruten på brettet er riktig representert.
 	 */
-	
-	//TODO - Vet ikke hvor ting på brettet skal være (om ruten er stige eller slange)
 	
 	@Test
 	void testStartRute() {
@@ -64,7 +80,11 @@ public class BrettTest {
 		//Ser om spiller starter og lander på rute 1 om iFengsel=true
 		spiller.flyttBrikke(brettetsStartRute.getId(), 0);
 		assertTrue(spiller.getBrikke().getRute().getId() == 1);
-		spiller
+		assertFalse(spiller.isFengsel());
+		
+		spiller.spillTrekk(kopp, brett);
+		assertTrue(spiller.isFengsel());
+		assertTrue(spiller.getBrikke().getRute().getId() == 1);
 	}
 	
 	/**
@@ -89,7 +109,11 @@ public class BrettTest {
 	@Test
 	void testSlangeRuter() {
 		List<Rute> brettetsSlanger = brettetsRuter.stream().filter(x -> x.getType().getNavn() == "Slange").toList();
-		assertTrue(brikke.setRute(brettetsSlanger.getFirst().));
+		brikke.setRute(brettetsSlanger.getFirst());
+		
+		//Sjekker om brikke blir flyttet av slange
+		//TODO
+		assertTrue();
 	}
 	
 	/**
@@ -98,7 +122,11 @@ public class BrettTest {
 	
 	@Test
 	void testStigeRuter() {
-		List<Rute> brettetsStiger = brettetsRuter.stream().filter(x -> x.isStige()).toList();
+		List<Rute> brettetsStiger = brettetsRuter.stream().filter(x -> x.getType().getNavn() == "Stige").toList();
+		brikke.setRute(brettetsStiger.getFirst());
+		
+		//Sjekker om brikke blir flyttet av stige
+		//TODO
 	}
 	
 	/**
@@ -107,11 +135,18 @@ public class BrettTest {
 	
 	@Test
 	void testVanligeRuter() {
-		List<Rute> brettetsVanligeRuter = brettetsRuter.stream().filter(x -> !x.isSlange && !x.isStige).toList();
+		List<Rute> brettetsFlytteRuter = brettetsRuter.stream().filter(x -> !x.getType().getNavn() == "Stige" && !x.getType().getNavn() == "Slange").toList();
+		List<Rute> brettetsVanligeRuter = brettetsRuter;
+		brettetsVanligeRuter.remove(brettetsFlytteRuter);
 		brettetsVanligeRuter.remove(startRute);
 		brettetsVanligeRuter.remove(maalRute);
 		
+		//Sjekker om brettet ikke gjør noe
+		// - ikke mål
+		// - ikke start
+		// - ikke slange/stige
 		
+		//TODO
 	}
 	
 	

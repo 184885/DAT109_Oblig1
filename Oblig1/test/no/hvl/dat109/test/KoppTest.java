@@ -41,7 +41,7 @@ public class KoppTest {
 		assertTrue(alleMuligeVerdi.contains(kopp.getSum()));
 		
 		//Tester om den treffer 6 og triller på nytt.
-		
+		//TODO
 		
 		//Tester om den har trillet 6 tre ganger. (6 * 3 = 18).
 		koppAlltidSeks.trill();
