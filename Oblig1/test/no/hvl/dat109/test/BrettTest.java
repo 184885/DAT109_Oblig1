@@ -2,10 +2,13 @@ package no.hvl.dat109.test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -18,6 +21,9 @@ import no.hvl.dat109.model.Kopp;
 import no.hvl.dat109.model.Rute;
 import no.hvl.dat109.model.Spiller;
 import no.hvl.dat109.model.Terning;
+import no.hvl.dat109.model.entity.MaalRute;
+import no.hvl.dat109.model.entity.StartRute;
+import no.hvl.dat109.model.entity.VanligRute;
 import no.hvl.dat109.repo.RuteRepo2;
 import no.hvl.dat109.v2.entitet.Flytt;
 import no.hvl.dat109.v2.entitet.FlyttSluttRute;
@@ -41,28 +47,63 @@ public class BrettTest {
 	@Mock
 	@InjectMocks
 	RuteRepo2 ruterepo = new RuteRepo2(emf);
-	List<Rute> brettetsRuter = ruterepo.findAll();
-	
-	Brett brett = new Brett(brettetsRuter);
-	Brikke brikke = new Brikke();
-	Spiller spiller = new Spiller();
-	
-	Rute startRute = new StartRute2();
-	Rute maalRute = new MaalRute2();
-	Rute vanligRute = new VanligRute2();
-	Rute flyttStartRute = new FlyttStartRute();
-	Rute flyttSluttRute = new FlyttSluttRute();
-	Flytt stige = new Stige();
-	Flytt slange = new Slange();
 
+	Brett brett;
+	Brikke brikke;
+	Spiller spiller;
 
-	Terning alltidSeks = new Terning() {
-		public void trill() {}
-		public int getVerdi() {return 6;}
-	};
-	
-	Kopp kopp = new Kopp(alltidSeks);
-	
+	Rute startRute;
+	Rute maalRute;
+	Rute vanligRute;
+	Rute flyttStartRute;
+	Rute flyttSluttRute;
+	Flytt stige;
+	Flytt slange;
+
+	Terning alltidSeks;
+
+	Kopp kopp;
+
+	@BeforeEach
+	void nullstill() {
+		startRute = new StartRute();
+		startRute.setId(1);
+		Rute vinnerRute = new MaalRute();
+		vinnerRute.setId(100);
+		List<Rute> brettetsRuter = new ArrayList<>();
+		brettetsRuter.add(startRute);
+		brettetsRuter.add(vinnerRute);
+		for(int i=2;i<100;i++) {
+			Rute r = new VanligRute();
+			r.setId(i);
+			brettetsRuter.add(r);
+		}
+
+		when(ruterepo.findAll()).thenReturn(brettetsRuter);
+		brett = new Brett(ruterepo.findAll());
+		brikke = new Brikke();
+		spiller = new Spiller();
+
+		startRute = new StartRute2();
+		maalRute = new MaalRute2();
+		vanligRute = new VanligRute2();
+		flyttStartRute = new FlyttStartRute();
+		flyttSluttRute = new FlyttSluttRute();
+		stige = new Stige();
+		slange = new Slange();
+
+		alltidSeks = new Terning() {
+			public void trill() {
+			}
+
+			public int getVerdi() {
+				return 6;
+			}
+		};
+
+		kopp = new Kopp(alltidSeks);
+	}
+
 	@Before
 	public void initMocks() {
 		MockitoAnnotations.initMocks(this);
@@ -71,25 +112,22 @@ public class BrettTest {
 	/**
 	 * Tester om startruten på brettet er riktig representert.
 	 */
-	
+
 	@Test
 	void testStartRute() {
-		//Startrute på brettet
+		// Startrute på brettet
 		Rute brettetsStartRute = brett.getRuter().getFirst();
 		assertTrue(brettetsStartRute.equals(startRute) && brettetsStartRute.getId() == 1);
-		
-		//Ser om spiller starter og lander på rute 1 om iFengsel=true
+
+		// Ser om spiller starter og lander på rute 1 om iFengsel=true
 		spiller.flyttBrikke(brettetsStartRute.getId(), 0);
 		assertTrue(spiller.getBrikke().getRute().getId() == 1);
 
 		assertFalse(spiller.isFengsel());
-		
+
 		spiller.spillTrekk(kopp, brett);
 		assertTrue(spiller.isFengsel());
 		assertTrue(spiller.getBrikke().getRute().getId() == 1);
-
-
-		
 
 	}
 
@@ -111,7 +149,7 @@ public class BrettTest {
 	/**
 	 * Tester om slanger på brettet er riktig representert.
 	 */
-	
+
 	@Test
 	void testSlangeRuter() {
 
@@ -122,8 +160,6 @@ public class BrettTest {
 //		//Sjekker om brikke blir flyttet av slange
 //		//TODO
 //		assertTrue();
-
-
 
 	}
 
@@ -149,20 +185,18 @@ public class BrettTest {
 	@Test
 	void testVanligeRuter() {
 
-
 //		List<Rute> brettetsFlytteRuter = brettetsRuter.stream().filter(x -> !x.getType().getNavn() == "Stige" && !x.getType().getNavn() == "Slange").toList();
 //		List<Rute> brettetsVanligeRuter = brettetsRuter;
 //		brettetsVanligeRuter.remove(brettetsFlytteRuter);
 //		brettetsVanligeRuter.remove(startRute);
 //		brettetsVanligeRuter.remove(maalRute);
 //		
-		//Sjekker om brettet ikke gjør noe
+		// Sjekker om brettet ikke gjør noe
 		// - ikke mål
 		// - ikke start
 		// - ikke slange/stige
-		
-		//TODO
 
+		// TODO
 
 	}
 
