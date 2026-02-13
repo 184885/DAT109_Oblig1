@@ -51,6 +51,12 @@ public abstract class Rute2 extends Rute {
 	}
 
 	@Override
+	public void setId(int ruteID) {
+		super.setId(ruteID);
+		this.ruteID = ruteID;
+	}
+
+	@Override
 	public Brett getBrett() {
 		super.setBrett(brett);
 		return super.getBrett();

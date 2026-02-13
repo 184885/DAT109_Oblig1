@@ -2,33 +2,19 @@ package no.hvl.dat109.test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.when;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
-import jakarta.persistence.EntityManagerFactory;
 import no.hvl.dat109.model.Brett;
 import no.hvl.dat109.model.Brikke;
 import no.hvl.dat109.model.Kopp;
 import no.hvl.dat109.model.Rute;
 import no.hvl.dat109.model.Spiller;
 import no.hvl.dat109.model.Terning;
-import no.hvl.dat109.model.entity.MaalRute;
-import no.hvl.dat109.model.entity.StartRute;
-import no.hvl.dat109.model.entity.VanligRute;
-import no.hvl.dat109.repo.RuteRepo2;
 import no.hvl.dat109.v2.entitet.Flytt;
 import no.hvl.dat109.v2.entitet.FlyttSluttRute;
 import no.hvl.dat109.v2.entitet.FlyttStartRute;
-import no.hvl.dat109.v2.entitet.MaalRute2;
 import no.hvl.dat109.v2.entitet.Slange;
 import no.hvl.dat109.v2.entitet.StartRute2;
 import no.hvl.dat109.v2.entitet.Stige;
@@ -41,13 +27,6 @@ import no.hvl.dat109.v2.entitet.VanligRute2;
  */
 
 public class BrettTest {
-
-	@Mock
-	EntityManagerFactory emf;
-	@Mock
-	@InjectMocks
-	RuteRepo2 ruterepo = new RuteRepo2(emf);
-
 	Brett brett;
 	Brikke brikke;
 	Spiller spiller;
@@ -66,26 +45,12 @@ public class BrettTest {
 
 	@BeforeEach
 	void nullstill() {
-		startRute = new StartRute();
-		startRute.setId(1);
-		Rute vinnerRute = new MaalRute();
-		vinnerRute.setId(100);
-		List<Rute> brettetsRuter = new ArrayList<>();
-		brettetsRuter.add(startRute);
-		brettetsRuter.add(vinnerRute);
-		for(int i=2;i<100;i++) {
-			Rute r = new VanligRute();
-			r.setId(i);
-			brettetsRuter.add(r);
-		}
-
-		when(ruterepo.findAll()).thenReturn(brettetsRuter);
-		brett = new Brett(ruterepo.findAll());
+		brett = new Brett(LokaltBrett.getRuter());
 		brikke = new Brikke();
 		spiller = new Spiller();
 
-		startRute = new StartRute2();
-		maalRute = new MaalRute2();
+		startRute = brett.finnRute(1);
+		maalRute = brett.finnRute(100);
 		vanligRute = new VanligRute2();
 		flyttStartRute = new FlyttStartRute();
 		flyttSluttRute = new FlyttSluttRute();
@@ -104,10 +69,6 @@ public class BrettTest {
 		kopp = new Kopp(alltidSeks);
 	}
 
-	@Before
-	public void initMocks() {
-		MockitoAnnotations.initMocks(this);
-	}
 
 	/**
 	 * Tester om startruten på brettet er riktig representert.
@@ -116,11 +77,10 @@ public class BrettTest {
 	@Test
 	void testStartRute() {
 		// Startrute på brettet
-		Rute brettetsStartRute = brett.getRuter().getFirst();
-		assertTrue(brettetsStartRute.equals(startRute) && brettetsStartRute.getId() == 1);
+		assertTrue(startRute.getClass().equals(StartRute2.class) && startRute.getId() == 1);
 
 		// Ser om spiller starter og lander på rute 1 om iFengsel=true
-		spiller.flyttBrikke(brettetsStartRute.getId(), 0);
+		spiller.flyttBrikke(startRute.getId(), 0);
 		assertTrue(spiller.getBrikke().getRute().getId() == 1);
 
 		assertFalse(spiller.isFengsel());
